@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/Dashboard.css'
+import TransactionCard from '../components/TransactionCard'
 
 export default function Home() {
   return (
@@ -41,25 +42,23 @@ export default function Home() {
                 </div>
                 <div className="card card-tumpul flex-grow-1 body-section no-border">
                   <br/>
-                    <h1 className="mb-2">test</h1>
-
                   <div className="container-fluid" >
-
-                  <div class="row">
+                  <div className="row">
+                    
                     {/* income */}
-                    <div class="col-xl-6 col-md-12">
-                      <div class="card overflow-hidden">
-                        <div class="card-content">
-                          <div class="card-body cleartfix">
-                            <div class="media align-items-stretch">
-                              <div class="align-self-center">
-                                <i class="icon-pencil primary font-large-2 mr-2"></i>
+                    <div className="col-xl-6 col-md-12">
+                      <div className="card overflow-hidden">
+                        <div className="card-content">
+                          <div className="card-body cleartfix">
+                            <div className="media align-items-stretch">
+                              <div className="align-self-center">
+                                <i className="icon-pencil primary font-large-2 mr-2"></i>
                               </div>
-                              <div class="media-body">
-                                <h4>Total Income</h4>
+                              <div className="media-body">
+                                <h2>Total Income</h2>
                                 <span>range date</span>
                               </div>
-                              <div class="align-self-center">
+                              <div className="align-self-center">
                                 <h1>18,000</h1>
                               </div>
                             </div>
@@ -71,28 +70,46 @@ export default function Home() {
 
 
                     {/* expense */}
-                  <div class="col-xl-6 col-md-12">
-                    <div class="card">
-                      <div class="card-content">
-                        <div class="card-body cleartfix">
-                          <div class="media align-items-stretch">
-                            <div class="align-self-center">
-                              <i class="icon-speech warning font-large-2 mr-2"></i>
-                            </div>
-                            <div class="media-body">
-                              <h4>Total Expense</h4>
-                              <span>range date</span>
-                            </div>
-                            <div class="align-self-center"> 
-                              <h1>84,695</h1>
+                    <div className="col-xl-6 col-md-12">
+                        <div className="card">
+                          <div className="card-content">
+                            <div className="card-body cleartfix">
+                              <div className="media align-items-stretch">
+                                <div className="align-self-center">
+                                  <i className="icon-speech warning font-large-2 mr-2"></i>
+                                </div>
+                                <div className="media-body">
+                                  <h2>Total Expense</h2>
+                                  <span>range date</span>
+                                </div>
+                                <div className="align-self-center"> 
+                                  <h1>84,695</h1>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  {/* expense */}
+                  <br/>
+                  {/* detail list */}
+                  <div className="overflow-auto" style={{height: 495}}>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
+                    <TransactionCard></TransactionCard>
                   </div>
-                </div>
-                    {/* expense */}
+                  {/* detail list */}
+
+
                   </div>
                 </div>
             </div>
