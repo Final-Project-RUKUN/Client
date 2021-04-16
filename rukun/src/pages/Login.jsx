@@ -20,10 +20,10 @@ export default function Login() {
             <div className="col-lg-6">
               <div className="card1 pb-5 border-line">
                 <div className="row"> 
-                  <img src="" className="logo" placeholder="logo rukun"/> 
+                  <img src="" alt="logo" className="logo" placeholder="logo rukun"/> 
                 </div>
                 <div className="row px-3 justify-content-center mt-4 mb-5">   
-                  <img src="" className="image" placeholder="image login"/> 
+                  <img src="" alt="logo" className="image" placeholder="image login"/> 
                 </div>
               </div>
             </div>

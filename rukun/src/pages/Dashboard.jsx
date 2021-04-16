@@ -17,9 +17,11 @@ export default function Home() {
             <h3>Dashboard</h3>
             <div className="mb-2 d-flex justify-content-end align-items-center" >
               <form action="" className="d-flex justify-content-end">
+
                 <input type="text" value="Desa Catur" disabled="disabled" style={{marginRight: 10, height: 30}}/>
                 <input type="date" style={{marginRight: 10, height: 30}}/>
                 <button type="button" className="btn btn-sm btn-outline-primary" type="submit" style={{marginRight: 10, height: 30, marginTop: 2}}>Search</button>
+
               </form>
             </div>
               
