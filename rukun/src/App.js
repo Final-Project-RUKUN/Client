@@ -7,12 +7,32 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Accounts from './pages/Accounts'
+import Transactions from './pages/Transactions'
+import Suggestions from './pages/Suggestions'
+import Villagers from './pages/Villagers'
+import Reports from './pages/Reports'
 
 function App() {
   return (
     <Router>
       <div className="App">
     <Switch>
+      <Route path="/reports">
+        <Reports></Reports>
+      </Route>
+      <Route path="/transactions">
+        <Transactions></Transactions>
+      </Route>
+      <Route path="/accounts">
+        <Accounts></Accounts>
+      </Route>
+      <Route path="/suggestions">
+        <Suggestions></Suggestions>
+      </Route>
+      <Route path="/villagers">
+        <Villagers></Villagers>
+      </Route>
       <Route path="/">
         <Dashboard></Dashboard>
       </Route>

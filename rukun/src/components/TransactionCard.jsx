@@ -10,8 +10,8 @@ export default function TransactionCard() {
         <div className="media-body">
             <h2 className="media-title font-weight-semibold">jumlah </h2>
             <ul className="list-inline list-inline-dotted mb-3 mb-lg-2">
-                <li className="list-inline-item"><h4>pado</h4></li>
-                <li className="list-inline-item">bayar iuran</li>
+                <li className="list-inline-item" ><h4>pado</h4></li>
+                <li className="list-inline-item" >bayar iuran</li>
             </ul>
             <p className="mb-3">comment pas bayar kalo ada</p>
         </div>
