@@ -13,7 +13,7 @@ export default function Navbar() {
   }
   
   return (
-    <nav className="navbar navbar-light bg-light" style={{paddingTop: 0, paddingBottom: 0}}>
+    <nav className="navbar" style={{paddingTop: 0, paddingBottom: 0, backgroundColor: "#e9ecef"}}>
       <h1 className="navbar-brand">Logo Rukun</h1>
       <div>
       <ol className="breadcrumb mb-0">
