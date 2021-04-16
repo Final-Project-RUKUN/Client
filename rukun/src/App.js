@@ -12,6 +12,8 @@ import Transactions from './pages/Transactions'
 import Suggestions from './pages/Suggestions'
 import Villagers from './pages/Villagers'
 import Reports from './pages/Reports'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
   return (
@@ -33,8 +35,14 @@ function App() {
       <Route path="/villagers">
         <Villagers></Villagers>
       </Route>
-      <Route path="/">
+      <Route path="/dashboard">
         <Dashboard></Dashboard>
+      </Route>
+      <Route path="/register">
+        <Register></Register>
+      </Route>
+      <Route path="/">
+        <Login></Login>
       </Route>
     </Switch>
       </div>
