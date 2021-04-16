@@ -1,5 +1,7 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
+import VillagerList from '../components/VillagerList'
+import '../styles/Table.css'
 
 export default function Villagers() {
   return (
@@ -21,53 +23,36 @@ export default function Villagers() {
               </div>
             </div>
             <h4>Village Member</h4>
-            <div className="card card-body mb-2">
+            <div className="card card-body mb-2" style={{padding: 0, border: "none"}}>
             <section className="table">
             <div className="row">
             </div>
             <div>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Village</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <tr>
-                        <td>1</td>
-                        <td>Catur</td>
-                        <td>Desa Catur</td>
-                        <td>Kades</td>
-                        <td><button>Edit</button></td>
-                        </tr>
-                      </tr>
-
-                      <tr>
-                        <tr>
-                        <td>2</td>
-                        <td>Pado</td>
-                        <td>Desa Catur</td>
-                        <td>Bendhara</td>
-                        <td><button>Edit</button></td>
-                        </tr>
-                      </tr>
-
-                      <tr>
-                        <tr>
-                        <td>3</td>
-                        <td>Fahmi</td>
-                        <td>Desa Catur</td>
-                        <td>Warga</td>
-                        <td><button>Edit</button></td>
-                        </tr>
-                      </tr>
-                    </tbody>
-                </table>
+              <table>
+                <thead className="thead-light">
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Village</th>
+                  <th>Role</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody style={{height: 350}}>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList>
+                </tbody>
+              </table>
             </div>
             </section>
             </div>
