@@ -22,6 +22,9 @@ export default function Sidebar() {
   function toAccount() {
     history.push("/account")
   }
+  function logout() {
+    history.push("/")
+  }
   
   return (
     <div className="card-body px-0 d-flex flex-column">
@@ -56,7 +59,7 @@ export default function Sidebar() {
           </div>
       </div>
       <div className="menu">
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center" onClick={logout}>
               <i className="fa fa-power-off" style={{fontSize:"3rem", color:"#1abc9c"}}></i>
               <h6 className="m-0 font" style={{color: "white"}}>Logout</h6>
           </div>
