@@ -1,5 +1,6 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
+
 import VillagerList from '../components/VillagerList'
 import '../styles/Table.css'
 
@@ -28,6 +29,7 @@ export default function Villagers() {
             <div className="row">
             </div>
             <div>
+
               <table>
                 <thead className="thead-light">
                 <tr>
@@ -53,6 +55,7 @@ export default function Villagers() {
                   <VillagerList></VillagerList>
                 </tbody>
               </table>
+
             </div>
             </section>
             </div>
