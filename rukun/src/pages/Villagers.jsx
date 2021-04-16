@@ -21,6 +21,7 @@ export default function Villagers() {
               </div>
             </div>
             <h4>Village Member</h4>
+            <div className="card card-body mb-2">
             <section className="table">
             <div className="row">
             </div>
@@ -69,6 +70,7 @@ export default function Villagers() {
                 </table>
             </div>
             </section>
+            </div>
             </div>
           </div>
         </div>
