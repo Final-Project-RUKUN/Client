@@ -7,13 +7,11 @@ import { Modal, Button } from 'react-bootstrap'
 export default function Suggestions() {
   const history = useHistory()
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   function addSuggestion() {
-    setShow(false)
-
+    handleClose()
   }
 
   return (

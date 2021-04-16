@@ -1,9 +1,12 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import AccountCard from '../components/AccountCard'
 import VillageCard from '../components/VillageCard'
 
 export default function Account() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div>
@@ -16,9 +19,9 @@ export default function Account() {
             <br/>
             <div className="container-fluid" style={{textAlign: "start"}}>
             {/* content */}
-            <h2>Transactions</h2>
+            <h2>Account</h2>
             
-            <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
+            <div className="mb-3 mt-3 mr-5 d-flex justify-content-start align-items-center" >
               <div>
                 <h5>Desa Catur, 16 April 2021</h5>
               </div>
