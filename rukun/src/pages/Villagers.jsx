@@ -40,7 +40,7 @@ export default function Villagers() {
                   <th>Action</th>
                 </tr>
                 </thead>
-                <tbody style={{height: 350}}>
+                <tbody style={{height: 380}}>
                   <VillagerList></VillagerList>
                   <VillagerList></VillagerList>
                   <VillagerList></VillagerList>
