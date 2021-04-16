@@ -45,10 +45,10 @@ export default function Register() {
 
           <div className="col-lg-6">
             <div className="card1 pb-5">
-              <div className="row"> 
+              <div className="row d-flex justify-content-end" style={{width: 580}}>  
                 <img src="" className="logo" placeholder="logo rukun"/> 
               </div>
-              <div className="row justify-content-center mt-4 mb-5" style={{padding: 0}}>   
+              <div className="row justify-content-center mt-4 mb-5" style={{padding: 0, width: 580}}>   
                 <img src="" className="image" placeholder="image biar bagus"/> 
               </div>
             </div>
