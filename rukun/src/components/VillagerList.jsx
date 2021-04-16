@@ -7,7 +7,7 @@ export default function VillagerList() {
       <td>Fahmi</td>
       <td>Desa Catur</td>
       <td>Warga</td>
-      <td><button type="button" className="btn btn-warning">Edit</button></td>
+      <td><button type="button" className="btn btn-outline-warning">Edit</button></td>
     </tr>
   )
 }

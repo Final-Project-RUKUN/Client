@@ -42,7 +42,7 @@ export default function AccountCard() {
         <h6>Name: Catur</h6><br/>
         <h6>Username: caturkades</h6><br/>
         <h6>Role: Kades</h6><br/>
-        <button type="button" className="btn btn-warning" onClick={handleShow}>Edit</button>
+        <button type="button" className="btn btn-outline-warning" onClick={handleShow}>Edit</button>
       </div>
     </div>
     <Modal show={show} 
