@@ -18,6 +18,13 @@ export default function Reports() {
               <div className="container-fluid" style={{textAlign: "start"}}>
                 <h3>Reports</h3>
               {/* content */}
+              <div className="mb-2 d-flex justify-content-end align-items-center" >
+                <form action="" className="d-flex justify-content-end">
+                  <input type="text" value="Desa Catur" disabled="disabled" style={{marginRight: 10}}/>
+                  <input type="date" style={{marginRight: 10}}/>
+                  <button type="button" className="btn btn-sm btn-outline-primary" type="submit">Search</button>
+                </form>
+              </div>
 
               {/* header */}
               <div className="card">
@@ -78,7 +85,6 @@ export default function Reports() {
               {/* header */}
 
               {/* table */}
-                
               <table className="table">
                 <thead className="thead-light">
                   <tr>
@@ -89,7 +95,29 @@ export default function Reports() {
                     <th scope="col" style={{textAlign:"end"}}>Balance</th>
                   </tr>
                 </thead>
-                <tbody style={{height: 100}}>
+                <tbody style={{height: 380}}>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
+                  <ReportCard></ReportCard>
                   <ReportCard></ReportCard>
                   <ReportCard></ReportCard>
                   <ReportCard></ReportCard>
@@ -97,13 +125,11 @@ export default function Reports() {
               </table>
               {/* table */}
               {/* content */}
-              
-
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
+  </div>
   )
 }
