@@ -29,8 +29,9 @@ export default function Sidebar() {
   return (
     <div className="card-body px-0 d-flex flex-column">
       <div className="d-flex flex-column align-items-center justify-content-center mb-4">
-          <h3 className="m-0" style={{backgroundImage: "url(../images/rukun-logo-long.png)", color:"white"}}>logo RUKUN</h3>
-          <i className="fa fa-chart-line mb-1" style={{fontSize:"1rem", color:"#1abc9c"}}>tagline</i>
+          {/* <h3 className="m-0" style={{backgroundImage: "url(../images/rukun-logo-long.png)", color:"white"}}>logo RUKUN</h3> */}
+          <img src="../../rukun-logo.png" alt="Rukun Logo" className="m-0" style={{height:150}}/>
+          {/* <i className="fa fa-chart-line mb-1" style={{fontSize:"1rem", color:"#1abc9c"}}>tagline</i> */}
       </div>
       <div className="flex-grow-1 menu">
           <div className="d-flex align-items-center" onClick={toDashboard}>
