@@ -5,10 +5,32 @@ import { Modal, Button } from 'react-bootstrap'
 export default function AccountCard() {
   const history = useHistory()
   const [show, setShow] = useState(false);
+  const [name, setName] = useState('')
+  const [role, setRole] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  function editAccount() {
+
+  function editName(event) {
+    setName(event.target.value)
+  }
+  function editRole(event) {
+    setRole(event.target.value)
+  }
+  function editUsername(event) {
+    setUsername(event.target.value)
+  }
+  function editPassword(event) {
+    setPassword(event.target.value)
+  }
+  function editAccount(event) {
+    event.preventDefault()
+    const data = {
+      name, role, username, password
+    }
+    console.log(data);
     // history.push('/account/edit')
     handleClose()
   }
@@ -32,11 +54,13 @@ export default function AccountCard() {
       </Modal.Header>
       <Modal.Body>
       <form onSubmit={editAccount}>
-        <input type="text" placeholder="Edit Name" style={{margin: 10, width:350}}/>
-        <input type="text" placeholder="Edit Role" style={{margin: 10, width:350}}/>
-        <input type="number" placeholder="Edit Username" style={{margin: 10, width:350}}/>
-        <input type="text" placeholder="Edit Password" style={{margin: 10, width:350}}/>
-        
+        <input type="text" placeholder="Edit Name" style={{margin: 10, width:350}} onChange={editName}/>
+        <input type="text" placeholder="Edit Role" style={{margin: 10, width:350}}
+        onChange={editRole}/>
+        <input type="text" placeholder="Edit Username" style={{margin: 10, width:350}}
+        onChange={editUsername}/>
+        <input type="password" placeholder="Edit Password" style={{margin: 10, width:350}}
+        onChange={editPassword}/>
         <button className="btn btn-sm btn-outline-primary" type="submit" style={{margin: 10, width:100}}>Save</button>
       </form>
       </Modal.Body>

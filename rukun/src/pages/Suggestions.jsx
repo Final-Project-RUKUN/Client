@@ -7,10 +7,24 @@ import { Modal, Button } from 'react-bootstrap'
 export default function Suggestions() {
   const history = useHistory()
   const [show, setShow] = useState(false);
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  function addSuggestion() {
+  function addTitle(event) {
+    setTitle(event.target.value)
+  }
+  function addDescription(event){
+    setDescription(event.target.value)
+  }
+
+  function addSuggestion(event) {
+    event.preventDefault()
+    const data = {
+      title, description
+    }
+    console.log(data);
     handleClose()
   }
 
@@ -42,11 +56,11 @@ export default function Suggestions() {
                   <form onSubmit={addSuggestion}>
                     <div className="form-group">
                       <label>Title</label>
-                      <input type="text" className="form-control" placeholder="Title"/>
+                      <input type="text" className="form-control" placeholder="Title" onChange={addTitle}/>
                     </div>
                     <div className="form-group">
                       <label>Suggestion</label>
-                      <textarea placeholder="200 character max " maxLength= "200"></textarea>
+                      <textarea placeholder="200 character max " maxLength= "200" onChange={addDescription}></textarea >
                       <small id="emailHelp" className="form-text text-muted">Voice your suggestion here!</small>
                     </div>
                     <div className="d-flex justify-content-end">
