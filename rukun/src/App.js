@@ -7,7 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Accounts from './pages/Accounts'
+import Account from './pages/Account'
 import Transactions from './pages/Transactions'
 import Suggestions from './pages/Suggestions'
 import Villagers from './pages/Villagers'
@@ -24,8 +24,8 @@ function App() {
       <Route path="/transactions">
         <Transactions></Transactions>
       </Route>
-      <Route path="/accounts">
-        <Accounts></Accounts>
+      <Route path="/account">
+        <Account></Account>
       </Route>
       <Route path="/suggestions">
         <Suggestions></Suggestions>
