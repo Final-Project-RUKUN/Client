@@ -5,7 +5,7 @@ export default function Sidebar() {
   const history = useHistory()
 
   function toDashboard() {
-    history.push("/")
+    history.push("/dashboard")
   }
   function toReports() {
     history.push("/reports")

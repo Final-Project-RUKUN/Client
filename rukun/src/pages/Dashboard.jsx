@@ -16,8 +16,8 @@ export default function Home() {
             {/* content */}
             <h2>Dashboard</h2>
             <div className="mb-2 d-flex justify-content-end align-items-center" >
-              <form action="">
-                <input type="text" placeholder="Desa Catur" style={{marginRight: 10}}/>
+              <form action="" className="d-flex justify-content-end">
+                <input type="text" value="Desa Catur" disabled="disabled" style={{marginRight: 10}}/>
                 <input type="date" style={{marginRight: 10}}/>
                 <button type="button" className="btn btn-sm btn-outline-primary" type="submit">Search</button>
               </form>
