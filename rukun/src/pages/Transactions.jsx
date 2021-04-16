@@ -16,7 +16,7 @@ export default function Transaction() {
             {/* content */}
             <h2>Transactions</h2>
             
-            <div className="mb-5 mt-5 mr-5 d-flex justify-content-end align-items-center" >
+            <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
               <div>
                 <h5>Desa Catur, 16 April 2021</h5>
               </div>
