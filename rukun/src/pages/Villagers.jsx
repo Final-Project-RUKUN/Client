@@ -1,5 +1,6 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
+import UserList from '../components/UserList'
 
 export default function Villagers() {
   return (
@@ -38,33 +39,7 @@ export default function Villagers() {
                     </thead>
                     <tbody>
                       <tr>
-                        <tr>
-                        <td>1</td>
-                        <td>Catur</td>
-                        <td>Desa Catur</td>
-                        <td>Kades</td>
-                        <td><button>Edit</button></td>
-                        </tr>
-                      </tr>
-
-                      <tr>
-                        <tr>
-                        <td>2</td>
-                        <td>Pado</td>
-                        <td>Desa Catur</td>
-                        <td>Bendhara</td>
-                        <td><button>Edit</button></td>
-                        </tr>
-                      </tr>
-
-                      <tr>
-                        <tr>
-                        <td>3</td>
-                        <td>Fahmi</td>
-                        <td>Desa Catur</td>
-                        <td>Warga</td>
-                        <td><button>Edit</button></td>
-                        </tr>
+                        <UserList/>
                       </tr>
                     </tbody>
                 </table>

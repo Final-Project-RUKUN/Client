@@ -19,7 +19,7 @@ export default function Home() {
               <form action="" className="d-flex justify-content-end">
                 <input type="text" value="Desa Catur" disabled="disabled" style={{marginRight: 10}}/>
                 <input type="date" style={{marginRight: 10}}/>
-                <button type="button" className="btn btn-sm btn-outline-primary" type="submit">Search</button>
+                <button className="btn btn-sm btn-outline-primary" type="submit">Search</button>
               </form>
             </div>
               
