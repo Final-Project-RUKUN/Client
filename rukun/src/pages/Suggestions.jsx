@@ -42,23 +42,23 @@ export default function Suggestions() {
                   </Modal.Header>
                   <Modal.Body>
                   <form onSubmit={addSuggestion}>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label>Title</label>
-                      <input type="text" class="form-control" placeholder="Title"/>
+                      <input type="text" className="form-control" placeholder="Title"/>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Suggestion</label>
+                    <div className="form-group">
+                      <label>Suggestion</label>
                       <textarea placeholder="200 character max " maxLength= "200"></textarea>
-                      <small id="emailHelp" class="form-text text-muted">Voice your suggestion here!</small>
+                      <small id="emailHelp" className="form-text text-muted">Voice your suggestion here!</small>
                     </div>
                     <div className="d-flex justify-content-end">
-                      <button type="submit" class="btn btn-outline-primary" style={{marginRight:10}}>Submit</button>
-                      <button type="submit" class="btn btn-outline-danger" onClick={handleClose}>Cancel</button>
+                      <button type="submit" className="btn btn-outline-primary" style={{marginRight:10}}>Submit</button>
+                      <button type="submit" className="btn btn-outline-danger" onClick={handleClose}>Cancel</button>
                     </div>
                   </form>
                   </Modal.Body>
                   <Modal.Footer>
-                  <small id="emailHelp" class="form-text text-muted">Your suggestion will be very helpful in improving our village!</small>
+                  <small id="emailHelp" className="form-text text-muted">Your suggestion will be very helpful in improving our village!</small>
                   </Modal.Footer>
                 </Modal>
               </div>
