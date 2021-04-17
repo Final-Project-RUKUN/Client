@@ -1,16 +1,22 @@
+import axios from 'axios'
 
 export function setUsers(payload) {
   return { type: 'users/setUsers', payload }
 }
 
 export function setUsersAsync() {
-  const url = 'http://localhost:3002/users'
+  const url = 'http://localhost:4000/villagers'
 
   return (dispatch) => {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        dispatch(setUsers(data))
+    axios({
+      method: 'GET',
+      url,
+      headers: {
+        access_token: localStorage.access_token
+      }
+    })
+      .then(({data}) => {
+        dispatch(setUsers(data.Users))
       })
       .catch(err => console.log(err))
   }
