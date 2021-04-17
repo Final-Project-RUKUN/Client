@@ -1,8 +1,23 @@
-import React from 'react'
+import React,{ useEffect, useState } from 'react'
 import '../styles/Dashboard.css'
 import Sidebar from '../components/Sidebar'
+import { useDispatch, useSelector } from 'react-redux'
+import { getData } from '../store/actions/admin'
+import ClipLoader from "react-spinners/ClipLoader"
 
 export default function Home() {
+  const data = useSelector(state => state.admin.data)
+  const loading = useSelector(state => state.admin.loading)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getData())
+  }, [dispatch])
+
+  function toIDR (value) {
+    return `Rp. ${value.toLocaleString()}`
+  }
+
   return (
     <div>
       <div className="container-fluid">
@@ -18,7 +33,7 @@ export default function Home() {
             <div className="mb-2 d-flex justify-content-end align-items-center" >
               <form action="" className="d-flex justify-content-end">
 
-                <input type="text" value="Desa Catur" disabled="disabled" style={{marginRight: 10, height: 30}}/>
+                <input type="text" value={data.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
                 <input type="date" style={{marginRight: 10, height: 30}}/>
                 <button type="button" className="btn btn-sm btn-outline-primary" type="submit" style={{marginRight: 10, height: 30, marginTop: 2}}>Search</button>
 
@@ -82,7 +97,10 @@ export default function Home() {
                         </div>
                         <div className="media-body">
                           <h6>CURRENT BALANCE</h6>
-                          <h3>Rp. 25.000.000</h3>
+                          { 
+                            loading ? <ClipLoader></ClipLoader> :
+                            (<h3>{toIDR(data?.balance)}</h3>)
+                          }
                         </div>
                       </div>
                     </div>
@@ -102,7 +120,12 @@ export default function Home() {
                           </div>
                           <div className="media-body">
                           <h6>TRANSACTIONS</h6>
-                          <h3>5</h3>
+                          {
+                            loading ? <ClipLoader></ClipLoader> :
+                            <h3>{
+                            data?.Transactions.length === 0 ? 0 : data?.Transactions.length 
+                            }</h3>
+                          }
                         </div>
                         </div>
                       </div>
