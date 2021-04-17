@@ -46,7 +46,6 @@ export function adminLogout() {
   }
 }
 
-
 export function getData() {
   return (dispatch) => {
     dispatch(setLoading(true))
@@ -58,6 +57,7 @@ export function getData() {
       }
     })
     .then(({data}) => {
+      console.log(data);
       dispatch(setData(data))
     })
     .catch(err => {
@@ -67,5 +67,4 @@ export function getData() {
       dispatch(setLoading(false))
     })
   }
-
 }

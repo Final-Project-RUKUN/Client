@@ -4,15 +4,16 @@ import VillagerList from '../components/VillagerList'
 import '../styles/Table.css'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setUsersAsync } from '../store/actions/users'
+import { getVillagers } from '../store/actions/village'
 
 export default function Villagers() {
-
-  const users = useSelector(state => state.users.data)
+  const village = useSelector(state => state.village.data)
+  const loading = useSelector(state => state.village.loading)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(setUsersAsync())
+    dispatch(getVillagers())
+    console.log(village,loading ,'<<<<<<<<<,,,');
   }, [dispatch])
 
   return (
@@ -26,11 +27,10 @@ export default function Villagers() {
             <br/>
             <div className="container-fluid" style={{textAlign: "start"}}>
             {/* content */}
-            <h2>Villagers</h2>
             
-            <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
+            <div className="mb-5 mt-3 mr-3 d-flex justify-content-start align-items-center" >
               <div>
-                <h5>Desa Catur, 16 April 2021</h5>
+                <h2>{village.name}</h2>
               </div>
             </div>
             <h4>Village Member</h4>
@@ -51,8 +51,9 @@ export default function Villagers() {
                 </tr>
                 </thead>
                 <tbody style={{height: 380}}>
+
                 {
-                  users.map((user, index) => {
+                  village.Users.map((user, index) => {
                     return <VillagerList user={user} key={user.id} index={index}></VillagerList>
                   })
                 }
