@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 
 import VillagerList from '../components/VillagerList'
 import '../styles/Table.css'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { setUsersAsync } from '../store/actions/users'
+
 export default function Villagers() {
+
+  const users = useSelector(state => state.users.data)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setUsersAsync())
+  }, [dispatch])
+
   return (
     <div>
       <div className="container-fluid">
@@ -41,6 +52,12 @@ export default function Villagers() {
                 </tr>
                 </thead>
                 <tbody style={{height: 380}}>
+                {
+                  users.map((user, index) => {
+                    return <VillagerList user={user} key={user.id} index={index}></VillagerList>
+                  })
+                }
+                  {/* <VillagerList></VillagerList>
                   <VillagerList></VillagerList>
                   <VillagerList></VillagerList>
                   <VillagerList></VillagerList>
@@ -51,8 +68,7 @@ export default function Villagers() {
                   <VillagerList></VillagerList>
                   <VillagerList></VillagerList>
                   <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
+                  <VillagerList></VillagerList> */}
                 </tbody>
               </table>
 
