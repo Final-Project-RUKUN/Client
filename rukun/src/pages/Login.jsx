@@ -1,11 +1,39 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import "../styles/Login.css"
+import { useDispatch } from 'react-redux'
+import { adminLogin } from '../store/actions/admin'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 export default function Login() {
   const history = useHistory()
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [role, setRole] = useState('')
+  const dispatch = useDispatch()
 
-  function login() {
+  function addUsername(event) {
+    setUsername(event.target.value)
+  }
+  function addPassword(event) {
+    setPassword(event.target.value)
+  }
+  function addRole(event) {
+    setRole(event.target.value)
+  }
+
+  function login(event) {
+    event.preventDefault()
+    const data ={
+      username, password, role
+    }
+    dispatch(adminLogin(data))
+    toast.success(`welcome ${username}`, {
+      autoClose: 3000,
+      position: toast.POSITION.TOP_RIGHT,
+    })
     history.push('/dashboard')
   }
   function register() {
@@ -30,18 +58,24 @@ export default function Login() {
             <div className="col-lg-6">
               <div className="card2 card border-0 px-4 py-5 mt-5">
               {/* form */}
-              <form onSubmit={login}>
+              <form onSubmit={(event) => login(event)}>
                 <div className="row px-3"> 
                   <label className="mb-1">
-                    <h6 className="mb-0 text-sm">Email Address</h6>
+                    <h6 className="mb-0 text-sm">Username</h6>
                   </label> 
-                  <input className="mb-4" type="email" placeholder="Enter a valid email address"/> 
+                  <input className="mb-4" type="text" placeholder="Username" onChange={addUsername} required/> 
                 </div>
                 <div className="row px-3"> 
                   <label className="mb-1">
                     <h6 className="mb-0 text-sm">Password</h6>
                   </label> 
-                  <input type="password" placeholder="Enter password"/> 
+                  <input type="password" placeholder="Enter password" required onChange={addPassword}/> 
+                </div>
+                <div className="row px-3"> 
+                  <label className="mb-1">
+                    <h6 className="mb-0 text-sm">Role</h6>
+                  </label> 
+                  <input type="password" placeholder="Role" required onChange={addRole}/> 
                 </div>
                 <div className="row mb-3 px-3"> 
                   <button type="submit" className="btn btn-blue text-center">Login</button> 

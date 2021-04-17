@@ -2,6 +2,10 @@ export function setSuggestions(payload) {
   return { type: 'suggestions/setSuggestions', payload }
 }
 
+export function setOneSuggestions(payload) {
+  return { type: 'suggestions/setOneSuggestions', payload }
+}
+
 export function setLoading (payload) {
   return {type : 'loading/setLoading', payload}
 }
@@ -36,5 +40,22 @@ export function newSuggestion (data) {
     })
       .then(data => setSuggestionsAsync())
       .catch(err => console.log(err))
+      .finally(_ => {
+        dispatch(setLoading(false))
+      })
+  }
+}
+
+export function getOneSuggestion(data) {
+  const id = data.id
+  return (dispatch) => {
+    fetch(`http://localhost:3003/suggestions/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      // console.log(data, 'action');
+      dispatch(setOneSuggestions(data))
+    })
+    .catch(err => console.log(err))
+
   }
 }
