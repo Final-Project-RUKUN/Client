@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
-
 import VillagerList from '../components/VillagerList'
 import '../styles/Table.css'
 
@@ -57,18 +56,6 @@ export default function Villagers() {
                     return <VillagerList user={user} key={user.id} index={index}></VillagerList>
                   })
                 }
-                  {/* <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList>
-                  <VillagerList></VillagerList> */}
                 </tbody>
               </table>
 

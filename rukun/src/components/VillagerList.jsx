@@ -2,11 +2,11 @@ import React from 'react'
 
 export default function VillagerList(props) {
   const { name, role, VillageId } = props.user
-  const { index } = props.index
+  const index = props.index
 
   return (
     <tr>
-      <td>{index}</td>
+      <td>{index + 1}</td>
       <td>{name}</td>
       <td>{VillageId}</td>
       <td>{role}</td>

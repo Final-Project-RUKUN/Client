@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import ReportCard from '../components/ReportCard'
 import '../styles/Table.css'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { setTransactionsAsync } from '../store/actions/transactions'
 
 export default function Reports() {
+
+  const transactions = useSelector(state => state.transactions.data)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setTransactionsAsync())
+  }, [dispatch])
+
   return (
     <div>
       <div>
@@ -92,35 +102,15 @@ export default function Reports() {
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
-                    <th scope="col" style={{textAlign:"end"}}>Balance</th>
+                    <th scope="col" style={{textAlign:"end"}}>Amount</th>
                   </tr>
                 </thead>
                 <tbody style={{height: 380}}>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
-                  <ReportCard></ReportCard>
+                  {
+                    transactions.map((transaction, index) => {
+                      return <ReportCard transaction={transaction} key={transaction.id} index={index}></ReportCard>
+                    })
+                  }
                 </tbody>
               </table>
               {/* table */}
