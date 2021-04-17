@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import SuggestionCard from '../components/SuggestionCard'
 import { useHistory } from 'react-router-dom'
-import { Modal, Button } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
+import ClipLoader from "react-spinners/ClipLoader"
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setSuggestionsAsync } from '../store/actions/suggestions'
+import { setSuggestionsAsync, newSuggestion } from '../store/actions/suggestions'
 
 export default function Suggestions() {
   const history = useHistory()
@@ -16,6 +17,7 @@ export default function Suggestions() {
   const handleShow = () => setShow(true);
 
   const suggestions = useSelector(state => state.suggestions.data)
+  const loading = useSelector(state => state.suggestions.loading)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -34,7 +36,8 @@ export default function Suggestions() {
     const data = {
       title, description
     }
-    console.log(data);
+    console.log(data, 'data add');
+    dispatch(newSuggestion(data))
     handleClose()
   }
 
@@ -63,7 +66,7 @@ export default function Suggestions() {
                     <Modal.Title>Add Suggestion</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                  <form onSubmit={addSuggestion}>
+                  <form onSubmit={(event) => addSuggestion(event)}>
                     <div className="form-group">
                       <label>Title</label>
                       <input type="text" className="form-control" placeholder="Title" onChange={addTitle}/>
@@ -75,7 +78,6 @@ export default function Suggestions() {
                     </div>
                     <div className="d-flex justify-content-end">
                       <button type="submit" className="btn btn-outline-primary" style={{marginRight:10}}>Submit</button>
-                      <button type="submit" className="btn btn-outline-danger" onClick={handleClose}>Cancel</button>
                     </div>
                   </form>
                   </Modal.Body>
@@ -92,22 +94,11 @@ export default function Suggestions() {
               </div>
               <div className="overflow-auto" style={{height: 550}}>
                 {
+                  loading ? <ClipLoader/> :
                   suggestions.map((suggestion, index) => {
                     return <SuggestionCard suggestion={suggestion} key={suggestion.id} index={index}></SuggestionCard>
                   })
                 }
-                {/* <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard> */}
               </div>
             </div>
           </div>

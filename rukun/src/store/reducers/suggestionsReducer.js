@@ -1,12 +1,16 @@
 const initialState = {
-  data: []
+  data: [],
+  loading: false,
+  error: null
 }
   
 function suggestionsReducer(state = initialState, action) {
   const { type, payload } = action
   if(type === 'suggestions/setSuggestions') {
     return { ...state, data: payload }
-  } 
+  } else if (type === 'loading/setLoading') {
+    return {...state, loading: payload}
+  }
   return state
 }
   

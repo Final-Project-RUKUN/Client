@@ -11,7 +11,7 @@ export default function SuggestionCard(props) {
         <div className="media-body">
           <h5 className="media-title font-weight-semibold">{title}</h5>
           <ul className="list-inline list-inline-dotted mb-3 mb-lg-2">
-            <li className="list-inline-item" ><h6>by user id: {UserId} </h6></li>
+            {/* <li className="list-inline-item" ><h6>by user id: {UserId} </h6></li> */}
             <li className="list-inline-item" > at 16 April 2021</li><br/>
             <li className="list-inline-item" >{description}</li>
           </ul>
