@@ -5,11 +5,10 @@ import { useHistory } from 'react-router-dom'
 import { Modal } from 'react-bootstrap'
 import ClipLoader from "react-spinners/ClipLoader"
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-toast.configure();
-
 import { useSelector, useDispatch } from 'react-redux'
 import { setSuggestionsAsync, newSuggestion } from '../store/actions/suggestions'
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 export default function Suggestions() {
   const history = useHistory()
