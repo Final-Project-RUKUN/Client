@@ -4,6 +4,9 @@ import SuggestionCard from '../components/SuggestionCard'
 import { useHistory } from 'react-router-dom'
 import { Modal } from 'react-bootstrap'
 import ClipLoader from "react-spinners/ClipLoader"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setSuggestionsAsync, newSuggestion } from '../store/actions/suggestions'
@@ -36,8 +39,12 @@ export default function Suggestions() {
     const data = {
       title, description
     }
-    console.log(data, 'data add');
+    // console.log(data, 'data add');
     dispatch(newSuggestion(data))
+    toast.success(`new suggestion added to the list`, {
+      autoClose: 3000,
+      position: toast.POSITION.TOP_RIGHT,
+    })
     handleClose()
   }
 
