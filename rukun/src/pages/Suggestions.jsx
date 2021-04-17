@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import SuggestionCard from '../components/SuggestionCard'
 import { useHistory } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap'
+
+import { useSelector, useDispatch } from 'react-redux'
+import { setSuggestionsAsync } from '../store/actions/suggestions'
 
 export default function Suggestions() {
   const history = useHistory()
@@ -11,6 +14,13 @@ export default function Suggestions() {
   const [description, setDescription] = useState('')
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const suggestions = useSelector(state => state.suggestions.data)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setSuggestionsAsync())
+  }, [dispatch])
 
   function addTitle(event) {
     setTitle(event.target.value)
@@ -81,6 +91,12 @@ export default function Suggestions() {
                 </form>
               </div>
               <div className="overflow-auto" style={{height: 550}}>
+                {
+                  suggestions.map((suggestion, index) => {
+                    return <SuggestionCard suggestion={suggestion} key={suggestion.id} index={index}></SuggestionCard>
+                  })
+                }
+                {/* <SuggestionCard></SuggestionCard>
                 <SuggestionCard></SuggestionCard>
                 <SuggestionCard></SuggestionCard>
                 <SuggestionCard></SuggestionCard>
@@ -91,8 +107,7 @@ export default function Suggestions() {
                 <SuggestionCard></SuggestionCard>
                 <SuggestionCard></SuggestionCard>
                 <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
-                <SuggestionCard></SuggestionCard>
+                <SuggestionCard></SuggestionCard> */}
               </div>
             </div>
           </div>
