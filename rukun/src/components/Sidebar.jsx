@@ -1,8 +1,14 @@
 import React from 'react'
 import { useHistory } from "react-router-dom"
+import { useDispatch } from 'react-redux'
+import { adminLogout } from '../store/actions/admin'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 export default function Sidebar() {
   const history = useHistory()
+  const dispatch = useDispatch()
 
   function toDashboard() {
     history.push("/dashboard")
@@ -22,7 +28,9 @@ export default function Sidebar() {
   function toAccount() {
     history.push("/account")
   }
+
   function logout() {
+    dispatch(adminLogout())
     history.push("/")
   }
   
@@ -60,7 +68,7 @@ export default function Sidebar() {
       <div className="menu">
           <div className="d-flex align-items-center" onClick={logout}>
               <i className="fa fa-power-off" style={{fontSize:"3rem", color:"#1abc9c"}}></i>
-              <h6 className="m-0 font" style={{color: "white"}}>Logout</h6>
+              <h6 className="m-0 font" style={{color: "white"}} onClick={(event) => logout(event)}>Logout</h6>
           </div>
       </div>
     </div>
