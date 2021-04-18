@@ -15,10 +15,6 @@ export default function Suggestions() {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [suggetion, setSuggestion] = useState({
-    title: '',
-    description: ''
-  })
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -29,12 +25,6 @@ export default function Suggestions() {
   useEffect(() => {
     dispatch(setSuggestionsAsync())
   }, [dispatch])
-
-  useEffect(() => {
-    if (data) {
-      setSuggestion({...suggetion, title: data.title, description: data.description})
-    }
-  }, [loading])
 
   function addTitle(event) {
     setTitle(event.target.value)
