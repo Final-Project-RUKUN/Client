@@ -53,14 +53,14 @@ export default function Login() {
             <div className="col-lg-6">
               <div className="card1 pb-5 border-line">
                 <div className="row"> 
-                  <img src="" alt="logo" className="logo" placeholder="logo rukun"/> 
+                  <img src="../../rukun-logo-long-blue.png" alt="logo" style={{width: 175, marginTop:60, marginLeft:70}}  placeholder="logo rukun"/> 
                 </div>
                 <div className="row px-3 justify-content-center mt-4 mb-5">   
-                  <img src="" alt="logo" className="image" placeholder="image login"/> 
+                  <img src="../../rukun-people.png" alt="logo" className="" style={{width: 600, marginTop:20, marginBottom:55, marginLeft:15}} placeholder="image login"/> 
                 </div>
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 mt-5 pt-5">
               <div className="card2 card border-0 px-4 py-5 mt-5">
               {/* form */}
               <form onSubmit={(event) => login(event)}>
@@ -76,10 +76,10 @@ export default function Login() {
                   </label> 
                   <input type="password" placeholder="Enter password" required onChange={addPassword}/> 
                 </div>
-                <div className="row mb-3 px-3"> 
+                <div className="row mb-3 px-3 mt-4"> 
                   <button type="submit" className="btn btn-blue text-center">Login</button> 
                 </div>
-                <div className="row mb-4 px-3"> 
+                <div className="row mb-4 px-3 mt-5"> 
                   <small className="font-weight-bold">Don't have an account? <a className="text-danger" onClick={register}>Register</a></small> 
                 </div>
               </form>
