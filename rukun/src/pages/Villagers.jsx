@@ -2,19 +2,24 @@ import React, { useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import VillagerList from '../components/VillagerList'
 import '../styles/Table.css'
+import ClipLoader from "react-spinners/ClipLoader"
+
 
 import { useSelector, useDispatch } from 'react-redux'
 import { getVillagers } from '../store/actions/village'
 
 export default function Villagers() {
-  const village = useSelector(state => state.village.data)
+  const village = useSelector(state => state.village.village)
   const loading = useSelector(state => state.village.loading)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getVillagers())
-    console.log(village,loading ,'<<<<<<<<<,,,');
   }, [dispatch])
+
+  if(loading) {
+    return <ClipLoader></ClipLoader>
+  }
 
   return (
     <div>
@@ -30,7 +35,10 @@ export default function Villagers() {
             
             <div className="mb-5 mt-3 mr-3 d-flex justify-content-start align-items-center" >
               <div>
-                <h2>{village.name}</h2>
+                {
+                  loading ? <ClipLoader></ClipLoader> :
+                <h2>{village?.name}</h2>
+                }
               </div>
             </div>
             <h4>Village Member</h4>
@@ -51,9 +59,9 @@ export default function Villagers() {
                 </tr>
                 </thead>
                 <tbody style={{height: 380}}>
-
                 {
-                  village.Users.map((user, index) => {
+                  loading ? <ClipLoader></ClipLoader> :
+                  village.Users?.map((user, index) => {
                     return <VillagerList user={user} key={user.id} index={index}></VillagerList>
                   })
                 }

@@ -20,7 +20,7 @@ export function getVillagers() {
       }
     })
     .then(({data}) => {
-      console.log(data);
+      console.log(data,' fetch');
       dispatch(setData(data))
     })
     .catch(err => {
@@ -34,22 +34,26 @@ export function getVillagers() {
 
 export function deleteVillagers(data) {
   console.log(data, 'acinot');
-  // return (dispatch) => {
-  //   axios({
-  //     url: "http://localhost:4000/villagers",
-  //     method: "DELETE",
-  //     headers: {
-  //       access_token: localStorage.access_token
-  //     }
-  //   })
-  //   .then(({data}) => {
-  //     console.log(data);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
+  const id = data
+  return (dispatch) => {
+    axios({
+      url: `http://localhost:4000/user/${id}`,
+      method: "DELETE",
+      headers: {
+        access_token: localStorage.access_token
+      }
+    })
+    .then(({data}) => {
+      dispatch(getVillagers())
+      console.log(data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
 
-  // }
+  }
 }
+
+
 
 

@@ -4,18 +4,29 @@ import Sidebar from '../components/Sidebar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../store/actions/admin'
 import ClipLoader from "react-spinners/ClipLoader"
+import { useHistory } from "react-router-dom"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
+
 
 export default function Home() {
   const data = useSelector(state => state.admin.data)
   const loading = useSelector(state => state.admin.loading)
+  const login = useSelector(state => state.admin.login)
   const dispatch = useDispatch()
+  const history = useHistory()
 
   useEffect(() => {
     dispatch(getData())
   }, [dispatch])
 
   function toIDR (value) {
-    return `Rp. ${value.toLocaleString()}`
+    return `Rp. ${value?.toLocaleString()}`
+  }
+
+  if(loading) {
+    return <ClipLoader></ClipLoader>
   }
 
   return (
@@ -31,13 +42,16 @@ export default function Home() {
             {/* content */}
             <h3>Dashboard</h3>
             <div className="mb-2 d-flex justify-content-end align-items-center" >
-              <form action="" className="d-flex justify-content-end">
-
+              <div className="d-flex justify-content-end">
+                {/* <h4 style={{marginRight:10}}>{data?.name} </h4>
+                <h4>your invite code: {data?.invitation_code}</h4> */}
+                <label htmlFor="">name</label>
                 <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
-                <input type="date" style={{marginRight: 10, height: 30}}/>
-                <button type="button" className="btn btn-sm btn-outline-primary" type="submit" style={{marginRight: 10, height: 30, marginTop: 2}}>Search</button>
+                <label htmlFor="">code</label>
+                <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
 
-              </form>
+
+              </div>
             </div>
               
             {/* summary */}
@@ -97,10 +111,10 @@ export default function Home() {
                         </div>
                         <div className="media-body">
                           <h6>CURRENT BALANCE</h6>
-                          {/* { 
+                          { 
                             loading ? <ClipLoader></ClipLoader> :
                             (<h3>{toIDR(data?.balance)}</h3>)
-                          } */}
+                          }
                         </div>
                       </div>
                     </div>
@@ -120,12 +134,12 @@ export default function Home() {
                           </div>
                           <div className="media-body">
                           <h6>TRANSACTIONS</h6>
-                          {/* {
+                          {
                             loading ? <ClipLoader></ClipLoader> :
                             <h3>{
-                            data?.Transactions.length === 0 ? 0 : data?.Transactions.length 
+                            data.Transactions?.length === 0 ? 0 : data.Transactions?.length 
                             }</h3>
-                          } */}
+                          }
                         </div>
                         </div>
                       </div>
