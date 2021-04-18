@@ -1,5 +1,9 @@
 const initialState = {
-  data: [],
+  data: [{
+    balance: 0,
+    name: '',
+    Transactions: []
+  }],
   loading: true
 }
   

@@ -10,17 +10,18 @@ export default function VillagerList(props) {
   const dispatch = useDispatch()
 
   function destroyVillager(id) {
-    console.log(id);
-    // if(role === 'admin') {
-    //   toast.error(`cannot delete admin`, {
-    //     autoClose: 3000,
-    //     position: toast.POSITION.TOP_RIGHT,
-    //   })
-    // } else {
-    //   dispatch(deleteVillagers(id))
-    // }
-    dispatch(deleteVillagers(id))
-
+    if(role === 'admin') {
+      toast.error(`cannot delete admin`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
+      })
+    } else {
+      toast.error(`${name} deleted`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
+      })
+      dispatch(deleteVillagers(id))
+    }
   }
 
   return (

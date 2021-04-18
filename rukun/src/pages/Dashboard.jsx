@@ -31,13 +31,14 @@ export default function Home() {
             {/* content */}
             <h3>Dashboard</h3>
             <div className="mb-2 d-flex justify-content-end align-items-center" >
-              <form action="" className="d-flex justify-content-end">
+              <div className="d-flex justify-content-end">
+                <h4>{data.name}</h4>
 
-                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
+                {/* <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
                 <input type="date" style={{marginRight: 10, height: 30}}/>
-                <button type="button" className="btn btn-sm btn-outline-primary" type="submit" style={{marginRight: 10, height: 30, marginTop: 2}}>Search</button>
+                <button type="button" className="btn btn-sm btn-outline-primary" type="submit" style={{marginRight: 10, height: 30, marginTop: 2}}>Search</button> */}
 
-              </form>
+              </div>
             </div>
               
             {/* summary */}
@@ -97,10 +98,10 @@ export default function Home() {
                         </div>
                         <div className="media-body">
                           <h6>CURRENT BALANCE</h6>
-                          {/* { 
+                          { 
                             loading ? <ClipLoader></ClipLoader> :
                             (<h3>{toIDR(data?.balance)}</h3>)
-                          } */}
+                          }
                         </div>
                       </div>
                     </div>
@@ -120,12 +121,12 @@ export default function Home() {
                           </div>
                           <div className="media-body">
                           <h6>TRANSACTIONS</h6>
-                          {/* {
+                          {
                             loading ? <ClipLoader></ClipLoader> :
                             <h3>{
                             data?.Transactions.length === 0 ? 0 : data?.Transactions.length 
                             }</h3>
-                          } */}
+                          }
                         </div>
                         </div>
                       </div>
