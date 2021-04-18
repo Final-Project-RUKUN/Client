@@ -28,7 +28,6 @@ export default function TransactionForm() {
 
     if (errors.length) {
       setError(true)
-      console.log('nyokkk');
     } else {
       dispatch(addTransactionsAsync(data))
     }
