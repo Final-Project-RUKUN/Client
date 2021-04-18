@@ -1,7 +1,7 @@
-import React,{ useState } from 'react'
+import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import "../styles/Login.css"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { adminLogin } from '../store/actions/admin'
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,6 +9,7 @@ toast.configure();
 
 export default function Login() {
   const history = useHistory()
+  const {  } = useSelector(state => state.admin)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
@@ -19,13 +20,10 @@ export default function Login() {
   function addPassword(event) {
     setPassword(event.target.value)
   }
-  function addRole(event) {
-    setRole(event.target.value)
-  }
 
   function login(event) {
     event.preventDefault()
-    const data ={
+    const data = {
       username, password
     }
     dispatch(adminLogin(data))

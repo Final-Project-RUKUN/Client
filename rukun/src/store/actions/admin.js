@@ -9,7 +9,7 @@ export function setLoading (payload) {
 }
 
 export function adminRegister(payload) {
-  return (dispatch) => {
+  return () => {
     axios({
       url: "http://localhost:4000/admin/register",
       method: "POST",
@@ -25,7 +25,7 @@ export function adminRegister(payload) {
 }
 
 export function adminLogin(payload) {
-  return (dispatch) => {
+  return () => {
     axios({
       url: "http://localhost:4000/admin/login",
       method: "POST",
@@ -41,7 +41,7 @@ export function adminLogin(payload) {
 }
 
 export function adminLogout() {
-  return (dispatch) => {
+  return () => {
     localStorage.removeItem('access_token')
   }
 }
@@ -57,7 +57,6 @@ export function getData() {
       }
     })
     .then(({data}) => {
-      console.log(data);
       dispatch(setData(data))
     })
     .catch(err => {
