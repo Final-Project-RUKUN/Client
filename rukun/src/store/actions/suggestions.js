@@ -69,7 +69,6 @@ export function getOneSuggestion(data) {
       dispatch(setOneSuggestions(data))
     })
     .catch(err => console.log(err))
-
   }
 }
 

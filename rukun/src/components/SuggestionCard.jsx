@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react'
-import { Modal } from 'react-bootstrap'
+import { ListGroup, Modal } from 'react-bootstrap'
 import { getOneSuggestion, deleteSuggestion } from '../store/actions/suggestions'
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -15,10 +15,10 @@ export default function SuggestionCard(props) {
 
   useEffect(() => {
     if(suggestionsById) {
-      setNewTitle(suggestionsById.title)
-      setNewDescription(suggestionsById.description)
+      setNewTitle(suggestionsById.newTitle)
+      setNewDescription(suggestionsById.newDescription)
     }
-  }, [dispatch])
+  }, [suggestionsById])
 
 
   function editTitle(event) {
@@ -60,7 +60,6 @@ export default function SuggestionCard(props) {
         <div className="media-body">
           <h5 className="media-title font-weight-semibold">{title}</h5>
           <ul className="list-inline list-inline-dotted mb-3 mb-lg-2">
-            {/* <li className="list-inline-item" ><h6>by user id: {UserId} </h6></li> */}
             <li className="list-inline-item" > at {createdAt}</li><br/>
             <li className="list-inline-item" >{description}</li>
           </ul>
