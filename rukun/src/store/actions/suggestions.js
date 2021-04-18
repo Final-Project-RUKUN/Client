@@ -45,7 +45,6 @@ export function newSuggestion (data) {
     data
   })
     .then(({data}) => {
-      // console.log(data);
       dispatch(setSuggestionsAsync())
     })
     .catch(err => console.log(err))
@@ -58,11 +57,34 @@ export function newSuggestion (data) {
 export function getOneSuggestion(data) {
   const id = data.id
   return (dispatch) => {
+    
     axios({
       url: `http://localhost:4000/suggestions/${id}`,
       method: 'GET',
       headers: {
         access_token: localStorage.access_token
+      }
+    })
+    .then(({data}) => {
+      dispatch(setOneSuggestions(data))
+    })
+    .catch(err => console.log(err))
+  }
+}
+
+export function updateSuggestion(data) {
+  const id = data.id
+  return (dispatch) => {
+    
+    axios({
+      url: `http://localhost:4000/suggestions/${id}`,
+      method: 'PUT',
+      headers: {
+        access_token: localStorage.access_token
+      },
+      data: {
+        title: data.title,
+        description: data.description
       }
     })
     .then(({data}) => {

@@ -1,32 +1,29 @@
 import React,{ useState, useEffect } from 'react'
 import { ListGroup, Modal } from 'react-bootstrap'
-import { getOneSuggestion, deleteSuggestion } from '../store/actions/suggestions'
+import { getOneSuggestion, deleteSuggestion, updateSuggestion } from '../store/actions/suggestions'
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function SuggestionCard(props) {
   const { title, description, UserId, id, createdAt } = props.suggestion
-  const suggestionsById = useSelector(state => state.suggestions.dataById)
-  const [show, setShow] = useState(false);
-  const [newTitle, setNewTitle] = useState('')
-  const [newDescription, setNewDescription] = useState('')
+  const { dataById, loading } = useSelector(state => state.suggestions)
+  const [show, setShow] = useState(false)
+  const [data, setData] = useState({
+    title: '',
+    description: ''
+  })
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if(suggestionsById) {
-      setNewTitle(suggestionsById.newTitle)
-      setNewDescription(suggestionsById.newDescription)
+    if(dataById) {
+      setData({
+        ...data,
+        title: dataById.title,
+        description: dataById.description
+      })
     }
-  }, [suggestionsById])
-
-
-  function editTitle(event) {
-    setNewTitle(event.target.value)
-  }
-  function editDescription(event){
-    setNewDescription(event.target.value)
-  }
+  }, [loading])
 
   function getSuggestionById(id) {
     handleShow()
@@ -38,11 +35,12 @@ export default function SuggestionCard(props) {
 
   function editSuggestion(event) {
     event.preventDefault()
-    const data = {
-      newTitle, newDescription
+    const newUpadte = { 
+      id,
+      title:data.title,
+      description: data.description
     }
-    console.log(data, 'data edit');
-
+    dispatch(updateSuggestion(newUpadte))
     // toast.success(`new suggestion added to the list`, {
     //   autoClose: 3000,
     //   position: toast.POSITION.TOP_RIGHT,
@@ -50,9 +48,22 @@ export default function SuggestionCard(props) {
     handleClose()
   }
 
+  function changeValue(event){
+    const { name, value } = event.target
+    setData({
+      ...data, [name]: value
+    })
+  }
+
   function destroySuggestion(id) {
     dispatch(deleteSuggestion(id))
   }
+
+  useEffect(() => {
+    if (show) {
+      getSuggestionById(id)
+    }
+  }, [show])
 
   return (
     <div className="card card-body mb-2">
@@ -80,11 +91,11 @@ export default function SuggestionCard(props) {
       <form onSubmit={(event) => editSuggestion(event)}>
         <div className="form-group">
           <label>Title</label>
-          <input type="text" className="form-control" placeholder="Title" value={suggestionsById.title} onChange={editTitle} />
+          <input type="text" className="form-control" placeholder="Title" name="title" value={data.title} onChange={ changeValue } />
         </div>
         <div className="form-group">
           <label>Description</label>
-          <textarea placeholder="200 character max " maxLength= "200" onChange={editDescription} value={suggestionsById.description}></textarea>
+          <textarea placeholder="200 character max " maxLength= "200" name="description" onChange={ changeValue } value={data.description}></textarea>
         </div>
         <div className="d-flex justify-content-end">
           <button type="submit" className="btn btn-outline-primary" style={{marginRight:10}}>Submit</button>

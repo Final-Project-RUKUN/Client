@@ -15,6 +15,10 @@ export default function Suggestions() {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [suggetion, setSuggestion] = useState({
+    title: '',
+    description: ''
+  })
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -25,6 +29,12 @@ export default function Suggestions() {
   useEffect(() => {
     dispatch(setSuggestionsAsync())
   }, [dispatch])
+
+  useEffect(() => {
+    if (data) {
+      setSuggestion({...suggetion, title: data.title, description: data.description})
+    }
+  }, [loading])
 
   function addTitle(event) {
     setTitle(event.target.value)
@@ -71,8 +81,8 @@ export default function Suggestions() {
                 </div>
                 <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
                 <Modal show={show} 
-                onHide={handleClose} 
-                backdrop="static"
+                  onHide={handleClose} 
+                  backdrop="static"
                 >
                   <Modal.Header closeButton>
                     <Modal.Title>Add Suggestion</Modal.Title>
@@ -85,7 +95,7 @@ export default function Suggestions() {
                     </div>
                     <div className="form-group">
                       <label>Suggestion</label>
-                      <textarea placeholder="200 character max " maxLength= "200" onChange={addDescription}></textarea >
+                      <textarea placeholder="200 character max " maxLength= "200" onChange={addDescription} />
                       <small id="emailHelp" className="form-text text-muted">Voice your suggestion here!</small>
                     </div>
                     <div className="d-flex justify-content-end">
