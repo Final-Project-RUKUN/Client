@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export function setSuggestions(payload) {
   return { type: 'suggestions/setSuggestions', payload }
 }
@@ -11,16 +13,27 @@ export function setLoading (payload) {
 }
   
 export function setSuggestionsAsync() {
-  const url = 'http://localhost:3003/suggestions'
+  const url = 'http://localhost:4000/suggestion'
   
   return (dispatch) => {
     dispatch(setLoading(true))
-    fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      dispatch(setSuggestions(data))
+    // fetch(url)
+    // .then(res => res.json())
+    // .then(data => {
+    //   dispatch(setSuggestions(data))
+    // })
+    // .catch(err => console.log(err))
+    axios({
+      method: 'GET',
+      url,
+      headers: {
+        access_token: localStorage.access_token
+      }
     })
-    .catch(err => console.log(err))
+      .then(({data}) => {
+        dispatch(setSuggestions(data.Suggestions))
+      })
+      .catch(err => console.log(err))
     .finally(_ => {
       dispatch(setLoading(false))
     })

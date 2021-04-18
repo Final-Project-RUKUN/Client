@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-export function setTransactions(payload) {
-  return { type: 'transactions/setTransactions', payload }
+export function setUsers(payload) {
+  return { type: 'users/setUsers', payload }
 }
-  
-export function setTransactionsAsync() {
-  const url = 'http://localhost:4000/transaction'
-  
+
+export function setUsersAsync() {
+  const url = 'http://localhost:4000/villagers'
+
   return (dispatch) => {
     axios({
       method: 'GET',
@@ -16,7 +16,7 @@ export function setTransactionsAsync() {
       }
     })
       .then(({data}) => {
-        dispatch(setTransactions(data.Transactions))
+        dispatch(setUsers(data.Users))
       })
       .catch(err => console.log(err))
   }
