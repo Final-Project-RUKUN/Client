@@ -31,12 +31,14 @@ export function adminRegister(payload) {
 
 export function adminLogin(payload) {
   return (dispatch) => {
+    console.log('masukkkk koko');
     axios({
       url: "http://localhost:4000/admin/login",
       method: "POST",
       data: payload
     })
     .then(data => {
+      console.log(data, '>>>data<<<');
       localStorage.setItem('access_token', data.data)
       dispatch(setLogin(true))
     })
@@ -64,7 +66,6 @@ export function getData() {
       }
     })
     .then(({data}) => {
-      console.log(data);
       dispatch(setData(data))
     })
     .catch(err => {
@@ -79,7 +80,7 @@ export function getData() {
 export function changeAdmin(data) {
   console.log(data, 'action');
   const id = data
-  return (dispatch) => {
+  return () => {
     axios({
       url: `http://localhost:4000/admin/change/${id}`,
       method: "PUT",
