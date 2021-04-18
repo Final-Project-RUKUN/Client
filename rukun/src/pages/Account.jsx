@@ -26,8 +26,8 @@ export default function Account() {
                 <h5>Desa Catur, 16 April 2021</h5>
               </div>
             </div>
-            <h5>Account Detail</h5>
-            <AccountCard/><br/>
+            {/* <h5>Account Detail</h5>
+            <AccountCard/><br/> */}
 
             <h5>Village Detail</h5>
             <VillageCard/>

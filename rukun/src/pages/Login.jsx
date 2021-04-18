@@ -11,7 +11,6 @@ export default function Login() {
   const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('')
   const dispatch = useDispatch()
 
   function addUsername(event) {
@@ -27,7 +26,7 @@ export default function Login() {
   function login(event) {
     event.preventDefault()
     const data ={
-      username, password, role
+      username, password
     }
     dispatch(adminLogin(data))
     toast.success(`welcome ${username}`, {
@@ -70,12 +69,6 @@ export default function Login() {
                     <h6 className="mb-0 text-sm">Password</h6>
                   </label> 
                   <input type="password" placeholder="Enter password" required onChange={addPassword}/> 
-                </div>
-                <div className="row px-3"> 
-                  <label className="mb-1">
-                    <h6 className="mb-0 text-sm">Role</h6>
-                  </label> 
-                  <input type="password" placeholder="Role" required onChange={addRole}/> 
                 </div>
                 <div className="row mb-3 px-3"> 
                   <button type="submit" className="btn btn-blue text-center">Login</button> 

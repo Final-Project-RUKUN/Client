@@ -1,7 +1,11 @@
 import axios from 'axios'
 
-export function registerAdmin(payload) {
-  return { type: 'admin/registerAdmin', payload }
+export function setData(payload) {
+  return { type: 'admin/setData', payload }
+}
+
+export function setLoading (payload) {
+  return {type : 'loading/setLoading', payload}
 }
 
 export function adminRegister(payload) {
@@ -28,7 +32,6 @@ export function adminLogin(payload) {
       data: payload
     })
     .then(data => {
-      console.log(data, 'data');
       localStorage.setItem('access_token', data.data)
     })
     .catch(err => {
@@ -43,3 +46,25 @@ export function adminLogout() {
   }
 }
 
+export function getData() {
+  return (dispatch) => {
+    dispatch(setLoading(true))
+    axios({
+      url: "http://localhost:4000/transaction",
+      method: "GET",
+      headers: {
+        access_token: localStorage.access_token
+      }
+    })
+    .then(({data}) => {
+      console.log(data);
+      dispatch(setData(data))
+    })
+    .catch(err => {
+      console.log(err, 'error fetch');
+    })
+    .finally(_ => {
+      dispatch(setLoading(false))
+    })
+  }
+}
