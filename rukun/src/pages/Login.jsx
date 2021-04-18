@@ -39,7 +39,6 @@ export default function Login() {
       autoClose: 3000,
       position: toast.POSITION.TOP_RIGHT,
     })
-    // history.push('/dashboard')
   }
   function register() {
     history.push('/register')
