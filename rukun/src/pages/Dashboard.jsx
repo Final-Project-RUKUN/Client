@@ -15,7 +15,11 @@ export default function Home() {
   }, [dispatch])
 
   function toIDR (value) {
-    return `Rp. ${value.toLocaleString()}`
+    return `Rp. ${value?.toLocaleString()}`
+  }
+
+  if(loading) {
+    return <ClipLoader></ClipLoader>
   }
 
   return (
@@ -32,7 +36,7 @@ export default function Home() {
             <h3>Dashboard</h3>
             <div className="mb-2 d-flex justify-content-end align-items-center" >
               <div className="d-flex justify-content-end">
-                <h4>{data.name}</h4>
+                <h4>{data?.name}</h4>
 
                 {/* <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
                 <input type="date" style={{marginRight: 10, height: 30}}/>
@@ -124,7 +128,7 @@ export default function Home() {
                           {
                             loading ? <ClipLoader></ClipLoader> :
                             <h3>{
-                            data?.Transactions.length === 0 ? 0 : data?.Transactions.length 
+                            data.Transactions?.length === 0 ? 0 : data.Transactions?.length 
                             }</h3>
                           }
                         </div>

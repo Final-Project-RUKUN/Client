@@ -20,7 +20,7 @@ export function getVillagers() {
       }
     })
     .then(({data}) => {
-      // console.log(data,' fetch');
+      console.log(data,' fetch');
       dispatch(setData(data))
     })
     .catch(err => {
@@ -37,7 +37,7 @@ export function deleteVillagers(data) {
   const id = data
   return (dispatch) => {
     axios({
-      url: `http://localhost:4000/villagers/${id}`,
+      url: `http://localhost:4000/user/${id}`,
       method: "DELETE",
       headers: {
         access_token: localStorage.access_token
@@ -52,5 +52,7 @@ export function deleteVillagers(data) {
 
   }
 }
+
+
 
 

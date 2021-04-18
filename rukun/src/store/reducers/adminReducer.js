@@ -4,7 +4,7 @@ const initialState = {
     name: '',
     Transactions: []
   }],
-  loading: true
+  loading: false
 }
   
 function adminReducer(state = initialState, action) {

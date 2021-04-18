@@ -9,13 +9,14 @@ export function setLoading (payload) {
 }
 
 export function adminRegister(payload) {
+  console.log(payload);
   return (dispatch) => {
     axios({
       url: "http://localhost:4000/admin/register",
       method: "POST",
       data: payload
     })
-    .then(data => {
+    .then(({data}) => {
       console.log(data);
     })
     .catch(err => {
@@ -50,14 +51,13 @@ export function getData() {
   return (dispatch) => {
     dispatch(setLoading(true))
     axios({
-      url: "http://localhost:4000/transaction",
+      url: "http://localhost:4000/transactions",
       method: "GET",
       headers: {
         access_token: localStorage.access_token
       }
     })
     .then(({data}) => {
-      console.log(data);
       dispatch(setData(data))
     })
     .catch(err => {
@@ -66,5 +66,26 @@ export function getData() {
     .finally(_ => {
       dispatch(setLoading(false))
     })
+  }
+}
+
+export function changeAdmin(data) {
+  console.log(data, 'action');
+  const id = data
+  return (dispatch) => {
+    axios({
+      url: `http://localhost:4000/admin/change/${id}`,
+      method: "PUT",
+      headers: {
+        access_token: localStorage.access_token
+      }
+    })
+    .then(({data}) => {
+      console.log(data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
   }
 }

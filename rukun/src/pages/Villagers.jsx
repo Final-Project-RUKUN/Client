@@ -9,13 +9,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getVillagers } from '../store/actions/village'
 
 export default function Villagers() {
-  const village = useSelector(state => state.village.data)
+  const village = useSelector(state => state.village.village)
   const loading = useSelector(state => state.village.loading)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getVillagers())
   }, [dispatch])
+
+  if(loading) {
+    return <ClipLoader></ClipLoader>
+  }
 
   return (
     <div>
@@ -33,7 +37,7 @@ export default function Villagers() {
               <div>
                 {
                   loading ? <ClipLoader></ClipLoader> :
-                <h2>{village.name}</h2>
+                <h2>{village?.name}</h2>
                 }
               </div>
             </div>
@@ -55,10 +59,9 @@ export default function Villagers() {
                 </tr>
                 </thead>
                 <tbody style={{height: 380}}>
-
                 {
                   loading ? <ClipLoader></ClipLoader> :
-                  village.Users.map((user, index) => {
+                  village.Users?.map((user, index) => {
                     return <VillagerList user={user} key={user.id} index={index}></VillagerList>
                   })
                 }

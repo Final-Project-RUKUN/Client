@@ -9,7 +9,7 @@ const initialState = {
 function villageReducer(state = initialState, action) {
   const { type, payload } = action
   if(type === 'village/setData') {
-    return { ...state, data: payload }
+    return { ...state, village: payload }
   } else if (type === 'loading/setLoading') {
     return {...state, loading: payload}
   }
