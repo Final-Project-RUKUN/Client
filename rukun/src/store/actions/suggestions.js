@@ -13,16 +13,9 @@ export function setLoading (payload) {
 }
   
 export function setSuggestionsAsync() {
-  const url = 'http://localhost:4000/suggestion'
-  
+  const url = 'http://localhost:4000/suggestions'
   return (dispatch) => {
     dispatch(setLoading(true))
-    // fetch(url)
-    // .then(res => res.json())
-    // .then(data => {
-    //   dispatch(setSuggestions(data))
-    // })
-    // .catch(err => console.log(err))
     axios({
       method: 'GET',
       url,
@@ -30,10 +23,10 @@ export function setSuggestionsAsync() {
         access_token: localStorage.access_token
       }
     })
-      .then(({data}) => {
-        dispatch(setSuggestions(data.Suggestions))
-      })
-      .catch(err => console.log(err))
+    .then(({data}) => {
+      dispatch(setSuggestions(data))
+    })
+    .catch(err => console.log(err))
     .finally(_ => {
       dispatch(setLoading(false))
     })
@@ -43,32 +36,54 @@ export function setSuggestionsAsync() {
 export function newSuggestion (data) {
   return(dispatch) => {
     dispatch(setLoading(true))
-    fetch('http://localhost:3003/suggestions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify(data)
+    axios({
+    url: 'http://localhost:4000/suggestions',
+    method: 'POST',
+    headers: {
+      access_token: localStorage.access_token
+    },
+    data
+  })
+    .then(({data}) => {
+      // console.log(data);
+      dispatch(setSuggestionsAsync())
     })
-      .then(data => setSuggestionsAsync())
-      .catch(err => console.log(err))
-      .finally(_ => {
-        dispatch(setLoading(false))
-      })
+    .catch(err => console.log(err))
+    .finally(_ => {
+      dispatch(setLoading(false))
+    })
   }
 }
 
 export function getOneSuggestion(data) {
   const id = data.id
   return (dispatch) => {
-    fetch(`http://localhost:3003/suggestions/${id}`)
-    .then(res => res.json())
-    .then(data => {
-      // console.log(data, 'action');
+    axios({
+      url: `http://localhost:4000/suggestions/${id}`,
+      method: 'GET',
+      headers: {
+        access_token: localStorage.access_token
+      }
+    })
+    .then(({data}) => {
       dispatch(setOneSuggestions(data))
     })
     .catch(err => console.log(err))
+  }
+}
 
+export function deleteSuggestion(data) {
+  return (dispatch) => {
+    axios({
+      url: `http://localhost:4000/suggestions/${data}`,
+      method: 'DELETE',
+      headers: {
+        access_token: localStorage.access_token
+      }
+    })
+    .then(data => {
+      dispatch(setSuggestionsAsync())
+    })
+    .catch(err => console.log(err))
   }
 }

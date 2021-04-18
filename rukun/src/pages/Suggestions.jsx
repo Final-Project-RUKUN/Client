@@ -18,7 +18,7 @@ export default function Suggestions() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const suggestions = useSelector(state => state.suggestions.data)
+  const data = useSelector(state => state.suggestions.data)
   const loading = useSelector(state => state.suggestions.loading)
   const dispatch = useDispatch()
 
@@ -38,9 +38,8 @@ export default function Suggestions() {
     const data = {
       title, description
     }
-    // console.log(data, 'data add');
     dispatch(newSuggestion(data))
-    toast.success(`new suggestion added to the list`, {
+    toast.success(`${title} added to the list`, {
       autoClose: 3000,
       position: toast.POSITION.TOP_RIGHT,
     })
@@ -60,10 +59,17 @@ export default function Suggestions() {
               <br/>
               <div className="container-fluid" style={{textAlign: "start"}}>
                 <h3>Suggestions</h3>
-              <div className="mb-2 d-flex justify-content-between align-items-center" >
-              <div className="d-flex justify-content-start">
-                <button type="button" className="btn btn-sm btn-outline-warning" onClick={handleShow}>Add Suggestion</button>
-
+              <div className="mb-2 d-flex justify-content-end align-items-center" >
+              <div className="d-flex justify-content-end">
+                <button type="button" className="btn btn-sm btn-outline-warning" onClick={handleShow} >Add Suggestion</button>
+                <div style={{marginRight: 5, width: 100}}>
+                  <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>
+                </div>
+                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
+                <div style={{marginRight: 5, width: 120}}>
+                  <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
+                </div>
+                <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
                 <Modal show={show} 
                 onHide={handleClose} 
                 backdrop="static"
@@ -83,7 +89,7 @@ export default function Suggestions() {
                       <small id="emailHelp" className="form-text text-muted">Voice your suggestion here!</small>
                     </div>
                     <div className="d-flex justify-content-end">
-                      <button type="submit" className="btn btn-outline-primary" style={{marginRight:10}}>Submit</button>
+                      <button type="submit" className="btn btn-outline-primary" style={{marginRight:0}}>Submit</button>
                     </div>
                   </form>
                   </Modal.Body>
@@ -91,17 +97,14 @@ export default function Suggestions() {
                   <small id="emailHelp" className="form-text text-muted">Your suggestion will be very helpful in improving our village!</small>
                   </Modal.Footer>
                 </Modal>
-              </div>
-                <form action="" className="d-flex justify-content-end">
-                  <input type="text" value="Desa Catur" disabled="disabled" style={{marginRight: 10, height: 30}}/>
-                  <input type="date" style={{marginRight: 10, height: 30}}/>
-                  <button type="button" className="btn btn-sm btn-outline-primary" type="submit" style={{marginRight: 10, height: 30, marginTop: 2}}>Search</button>
-                </form>
+
+              </div >
+              
               </div>
               <div className="overflow-auto" style={{height: 550}}>
                 {
                   loading ? <ClipLoader/> :
-                  suggestions.map((suggestion, index) => {
+                  data.Suggestions?.map((suggestion, index) => {
                     return <SuggestionCard suggestion={suggestion} key={suggestion.id} index={index}></SuggestionCard>
                   })
                 }
