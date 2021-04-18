@@ -43,14 +43,14 @@ export default function Home() {
             <h3>Dashboard</h3>
             <div className="mb-2 d-flex justify-content-end align-items-center" >
               <div className="d-flex justify-content-end">
-                {/* <h4 style={{marginRight:10}}>{data?.name} </h4>
-                <h4>your invite code: {data?.invitation_code}</h4> */}
-                <label htmlFor="">name</label>
+                <div style={{marginRight: 5, width: 100}}>
+                  <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>
+                </div>
                 <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
-                <label htmlFor="">code</label>
+                <div style={{marginRight: 5, width: 120}}>
+                  <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
+                </div>
                 <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
-
-
               </div>
             </div>
               
