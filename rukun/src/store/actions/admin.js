@@ -8,6 +8,10 @@ export function setLoading (payload) {
   return {type : 'loading/setLoading', payload}
 }
 
+export function setLogin(payload) {
+  return {type : 'login/setLogin', payload}
+}
+
 export function adminRegister(payload) {
   console.log(payload);
   return (dispatch) => {
@@ -34,6 +38,7 @@ export function adminLogin(payload) {
     })
     .then(data => {
       localStorage.setItem('access_token', data.data)
+      dispatch(setLogin(true))
     })
     .catch(err => {
       console.log(err);
@@ -44,6 +49,7 @@ export function adminLogin(payload) {
 export function adminLogout() {
   return (dispatch) => {
     localStorage.removeItem('access_token')
+    dispatch(setLogin(false))
   }
 }
 
@@ -58,6 +64,7 @@ export function getData() {
       }
     })
     .then(({data}) => {
+      console.log(data);
       dispatch(setData(data))
     })
     .catch(err => {

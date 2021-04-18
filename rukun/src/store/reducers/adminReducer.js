@@ -4,7 +4,8 @@ const initialState = {
     name: '',
     Transactions: []
   }],
-  loading: false
+  loading: false,
+  login: false
 }
   
 function adminReducer(state = initialState, action) {
@@ -13,6 +14,9 @@ function adminReducer(state = initialState, action) {
     return { ...state, data: payload }
   } else if (type === 'loading/setLoading') {
     return {...state, loading: payload}
+  } else if (type === 'login/setLogin') {
+    return {...state, login: payload}
+
   }
   return state
 }

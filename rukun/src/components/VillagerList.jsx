@@ -10,10 +10,6 @@ export default function VillagerList(props) {
   const { id, name, role, VillageId } = props.user
   const dispatch = useDispatch()
 
-  useEffect(() => {
-
-  },[])
-
   function destroyVillager(id) {
     if(role === 'admin') {
       toast.error(`cannot delete admin`, {

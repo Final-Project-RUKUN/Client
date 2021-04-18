@@ -44,6 +44,7 @@ export function deleteVillagers(data) {
       }
     })
     .then(({data}) => {
+      dispatch(getVillagers())
       console.log(data);
     })
     .catch(err => {

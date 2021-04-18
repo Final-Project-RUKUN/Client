@@ -1,17 +1,25 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+
 import "../styles/Login.css"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { adminLogin } from '../store/actions/admin'
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
 export default function Login() {
+  const isLogin = useSelector(state => state.admin.login)
   const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if(isLogin) {
+      history.push('/dashboard')
+    }
+  }, [isLogin])
 
   function addUsername(event) {
     setUsername(event.target.value)
@@ -19,9 +27,7 @@ export default function Login() {
   function addPassword(event) {
     setPassword(event.target.value)
   }
-  function addRole(event) {
-    setRole(event.target.value)
-  }
+
 
   function login(event) {
     event.preventDefault()
@@ -33,7 +39,7 @@ export default function Login() {
       autoClose: 3000,
       position: toast.POSITION.TOP_RIGHT,
     })
-    history.push('/dashboard')
+    // history.push('/dashboard')
   }
   function register() {
     history.push('/register')
