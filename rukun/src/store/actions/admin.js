@@ -66,7 +66,7 @@ export function getData() {
       }
     })
     .then(({data}) => {
-      console.log(data);
+      // console.log(data);
       dispatch(setData(data))
     })
     .catch(err => {
