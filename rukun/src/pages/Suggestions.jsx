@@ -39,7 +39,7 @@ export default function Suggestions() {
       title, description
     }
     dispatch(newSuggestion(data))
-    toast.success(`${title} added to the list`, {
+    toast.info(`${title} added to the list`, {
       autoClose: 3000,
       position: toast.POSITION.TOP_RIGHT,
     })

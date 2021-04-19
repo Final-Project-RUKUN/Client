@@ -35,7 +35,7 @@ export default function Login() {
       username, password
     }
     dispatch(adminLogin(data))
-    toast.success(`welcome ${username}`, {
+    toast.info(`welcome ${username}`, {
       autoClose: 3000,
       position: toast.POSITION.TOP_RIGHT,
     })

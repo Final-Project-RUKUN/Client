@@ -17,7 +17,7 @@ export default function VillagerList(props) {
         position: toast.POSITION.TOP_RIGHT,
       })
     } else {
-      toast.success(`${name} deleted`, {
+      toast.info(`${name} deleted`, {
         autoClose: 3000,
         position: toast.POSITION.TOP_RIGHT,
       })
@@ -32,7 +32,7 @@ export default function VillagerList(props) {
         position: toast.POSITION.TOP_RIGHT,
       })
     } else {
-      toast.success(`${name} demoted`, {
+      toast.info(`${name} demoted`, {
         autoClose: 3000,
         position: toast.POSITION.TOP_RIGHT,
       })

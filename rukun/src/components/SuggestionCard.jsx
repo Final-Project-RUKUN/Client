@@ -41,7 +41,7 @@ export default function SuggestionCard(props) {
       description: data.description
     }
     dispatch(updateSuggestion(newUpadte))
-    // toast.success(`new suggestion added to the list`, {
+    // toast.info(`new suggestion added to the list`, {
     //   autoClose: 3000,
     //   position: toast.POSITION.TOP_RIGHT,
     // })
