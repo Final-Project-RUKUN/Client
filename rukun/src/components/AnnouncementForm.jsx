@@ -48,7 +48,7 @@ export default function AnnouncementForm() {
   }
 
   return (
-    <div className="card card-body mb-2">
+    <div className="card card-body mb-2 mr-5">
       <div className="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
         <div className="media-body">
             {

@@ -30,24 +30,24 @@ export default function Villagers() {
           </div>
           <div className="card card-tumpul flex-grow-1 body-section no-border">
             <br/>
-            <div className="container-fluid" style={{textAlign: "start"}}>
+            <div className="container-fluid" style={{textAlign: "start", marginTop: 50}}>
             {/* content */}
-            <h3>Villagers List</h3>
+            <h3>Villagers</h3>
             
-            <div className="mb-3 mt-3 d-flex justify-content-end align-items-center" >
+            <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
               <div className="d-flex justify-content-end">
                 <div style={{marginRight: 5, width: 100}}>
-                  <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>
+                  <label style={{marginRight: 5, width: 55, marginTop: 5}}>Village:</label>
                 </div>
-                <input type="text" value={village?.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
+                <input type="text" value={village?.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
                 <div style={{marginRight: 5, width: 120}}>
                   <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
                 </div>
                 <input type="text" value={village?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
               </div>
             </div>
-            <h4>Village Member</h4>
-            <div className="card card-body mb-2" style={{padding: 0, border: "none"}}>
+            <h5>Village Members</h5><br/>
+            <div className="card card-body mb-2 mr-5" style={{padding: 0, border: "none"}}>
             <section className="table">
             <div className="row">
             </div>
@@ -67,7 +67,7 @@ export default function Villagers() {
                 {
                   loading ? <ClipLoader></ClipLoader> :
                   village.Users?.map((user, index) => {
-                    return <VillagerList user={user} key={user.id} index={index}></VillagerList>
+                    return <VillagerList user={user} village={village.name} key={user.id} index={index}></VillagerList>
                   })
                 }
                 </tbody>

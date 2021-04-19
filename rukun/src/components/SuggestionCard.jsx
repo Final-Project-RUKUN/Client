@@ -30,8 +30,8 @@ export default function SuggestionCard(props) {
         <div className="media-body">
           <h5 className="media-title font-weight-semibold">{title}</h5>
           <ul className="list-inline list-inline-dotted mb-3 mb-lg-2">
-            <li className="list-inline-item" > at <Moment format="D MMMM YYYY, HH:mm a" withTitle>{createdAt}</Moment></li><br/>
-            <li className="list-inline-item" >{description}</li>
+            <li className="list-inline-item" ><p> at <Moment format="D MMMM YYYY, HH:mm a" withTitle>{createdAt}</Moment></p></li><br/>
+            <li className="list-inline-item" ><h5>{description}</h5></li>
           </ul>
         </div>
         <div className="mt-4">
