@@ -2,6 +2,8 @@ import React,{ useState, useEffect } from 'react'
 import { ListGroup, Modal } from 'react-bootstrap'
 import { getOneSuggestion, deleteSuggestion, updateSuggestion } from '../store/actions/suggestions'
 import { useSelector, useDispatch } from 'react-redux'
+import Moment from 'react-moment';
+// import 'moment-timezone';
 
 export default function SuggestionCard(props) {
   const { title, description, UserId, id, createdAt } = props.suggestion
@@ -71,7 +73,7 @@ export default function SuggestionCard(props) {
         <div className="media-body">
           <h5 className="media-title font-weight-semibold">{title}</h5>
           <ul className="list-inline list-inline-dotted mb-3 mb-lg-2">
-            <li className="list-inline-item" > at {createdAt}</li><br/>
+            <li className="list-inline-item" > at <Moment format="D MMMM YYYY, HH:mm a" withTitle>{createdAt}</Moment></li><br/>
             <li className="list-inline-item" >{description}</li>
           </ul>
         </div>

@@ -61,7 +61,7 @@ export default function Suggestions() {
                 <h3>Suggestions</h3>
               <div className="mb-2 d-flex justify-content-end align-items-center" >
               <div className="d-flex justify-content-end">
-                <button type="button" className="btn btn-sm btn-outline-warning" onClick={handleShow} >Add Suggestion</button>
+                <button type="button" className="btn btn-sm btn-outline-warning" onClick={handleShow} style={{marginRight: 5, width: 350}} >Add Suggestion</button>
                 <div style={{marginRight: 5, width: 100}}>
                   <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>
                 </div>
