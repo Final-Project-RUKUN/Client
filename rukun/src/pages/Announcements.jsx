@@ -1,11 +1,16 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import AnnouncementForm from '../components/AnnouncementForm'
-import { useSelector } from 'react-redux'
-
+import { useSelector,useDispatch } from 'react-redux'
+import { getData } from '../store/actions/admin'
 
 export default function Transaction() {
   const data = useSelector(state => state.admin.data)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getData())
+  },[dispatch])
 
   return (
     <div>
