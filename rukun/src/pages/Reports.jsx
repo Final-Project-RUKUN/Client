@@ -19,10 +19,35 @@ export default function Reports() {
   }, [dispatch])
 
   function totalIncome() {
-    const income = transactions.filter(transaction => transaction.type === "income")
+    // const income = transactions.filter(transaction => transaction.type === "income")
+    let income = 0
 
-    return console.log(income, 'incomee');
+    transactions.forEach(transaction => {
+      if (transaction.type === "income") {
+        income = income + +transaction.amount
+      }
+    })
 
+    var rupiah = '';		
+    var angkarev = income.toString().split('').reverse().join('');
+    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+    return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
+  }
+
+  function totalExpance() {
+    // const income = transactions.filter(transaction => transaction.type === "income")
+    let income = 0
+
+    transactions.forEach(transaction => {
+      if (transaction.type === "expance") {
+        income = income + +transaction.amount
+      }
+    })
+
+    var rupiah = '';		
+    var angkarev = income.toString().split('').reverse().join('');
+    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+    return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
   }
 
   if(loading) {
@@ -89,7 +114,11 @@ export default function Reports() {
                             <i className="icon-speech warning font-large-2 float-left"></i>
                           </div>
                           <div className="media-body text-right">
-                            <h3>Rp. 27.000.000</h3>
+                            {
+                              transactions ?
+                              <h3>{ totalIncome() }</h3>
+                              : <></>
+                            }
                             <span>Total Income</span>
                           </div>
                         </div>
@@ -106,7 +135,11 @@ export default function Reports() {
                             <i className="icon-graph success font-large-2 float-left"></i>
                           </div>
                           <div className="media-body text-right">
-                            <h3>Rp. 25.000.000</h3>
+                            {
+                              transactions ?
+                              <h3>{ totalExpance() }</h3>
+                              : <></>
+                            }
                             <span>Current Balance</span>
                           </div>
                         </div>
