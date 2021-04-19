@@ -4,12 +4,15 @@ import { deleteVillagers } from '../store/actions/village'
 import { changeAdmin } from '../store/actions/admin'
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-toast.configure();
 import Swal from 'sweetalert2'
+toast.configure();
+
 
 
 export default function VillagerList(props) {
   const { id, name, role, VillageId } = props.user
+  const villageName = props.village
+  const index = props.index
   const dispatch = useDispatch()
 
   function destroyVillager(id) {
@@ -58,9 +61,9 @@ export default function VillagerList(props) {
 
   return (
     <tr>
-      <td>{id}</td>
+      <td>{index + 1}</td>
       <td>{name}</td>
-      <td>{VillageId}</td>
+      <td>{villageName}</td>
       <td>{role}</td>
       <td><button type="button" className="btn btn-sm btn-outline-danger mr-2" onClick={() => destroyVillager(id)}>Delete</button>
       <button type="button" className="btn btn-sm btn-outline-warning" onClick={() => demoteAdmin(id)}>Change Role</button></td>

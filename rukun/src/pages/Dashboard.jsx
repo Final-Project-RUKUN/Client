@@ -102,15 +102,15 @@ export default function Home() {
           </div>
           <div className="card card-tumpul flex-grow-1 body-section no-border">
             <br/>
-            <div className="container-fluid" style={{textAlign: "start"}}>
+            <div className="container-fluid" style={{textAlign: "start", marginTop: 50}}>
             {/* content */}
             <h3>Dashboard</h3>
-            <div className="mb-3 mt-3 d-flex justify-content-end align-items-center" >
+            <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
               <div className="d-flex justify-content-end">
                 <div style={{marginRight: 5, width: 100}}>
-                  <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>
+                  <label style={{marginRight: 5, width: 55, marginTop: 5}}>Village:</label>
                 </div>
-                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
+                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
                 <div style={{marginRight: 5, width: 120}}>
                   <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
                 </div>
@@ -119,8 +119,8 @@ export default function Home() {
             </div>
               
             {/* summary */}
-            <h4>SUMMARY</h4>
-            <div className="row">
+            <h5>SUMMARY</h5><br/>
+            <div className="row mr-5 mb-4">
               {/* income */}
               <div className="col-xl-6 col-md-12 mb-2">
                 <div className="card overflow-hidden">
@@ -130,11 +130,11 @@ export default function Home() {
                         <div className="align-self-center">
                           <i className="icon-pencil primary font-large-2 mr-2"></i>
                         </div>
-                        <div className="media-body">
+                        <div className="media-body mt-3 mb-2">
                           <h6>TOTAL INCOME</h6>
                           {
                             transactions ?
-                            <h3>{ totalIncome() }</h3>
+                            <h4>{ totalIncome() }</h4>
                             : <></>
                           }
                         </div>
@@ -154,11 +154,11 @@ export default function Home() {
                           <div className="align-self-center">
                             <i className="icon-speech warning font-large-2 mr-2"></i>
                           </div>
-                        <div className="media-body">
+                        <div className="media-body mt-3 mb-2">
                           <h6>TOTAL EXPENSE</h6>
                           {
                             transactions ?
-                            <h3>{ totalExpance() }</h3>
+                            <h4>{ totalExpance() }</h4>
                             : <></>
                           }
                         </div>
@@ -171,7 +171,7 @@ export default function Home() {
             {/* expense */}
 
           {/* transaction */}
-            <div className="row">
+            <div className="row mr-5 mb-4">
               {/* income */}
               <div className="col-xl-6 col-md-12 mb-2">
                 <div className="card overflow-hidden">
@@ -181,11 +181,11 @@ export default function Home() {
                         <div className="align-self-center">
                           <i className="icon-pencil primary font-large-2 mr-2"></i>
                         </div>
-                        <div className="media-body">
+                        <div className="media-body mt-3 mb-2">
                           <h6>CURRENT BALANCE</h6>
                           { 
                             loading ? <ClipLoader></ClipLoader> :
-                            (<h3>{toIDR(data?.balance)}</h3>)
+                            (<h4>{toIDR(data?.balance)}</h4>)
                           }
                         </div>
                       </div>
@@ -204,13 +204,13 @@ export default function Home() {
                           <div className="align-self-center">
                             <i className="icon-speech warning font-large-2 mr-2"></i>
                           </div>
-                          <div className="media-body" onClick={() => history.push('/reports')}>
+                          <div className="media-body mt-3 mb-2" onClick={() => history.push('/reports')}>
                           <h6>TRANSACTIONS</h6>
                           {
                             loading ? <ClipLoader></ClipLoader> :
-                            <h3>{
+                            <h4>{
                             data.Transactions?.length === 0 ? 0 : data.Transactions?.length 
-                            }</h3>
+                            }</h4>
                           }
                         </div>
                         </div>

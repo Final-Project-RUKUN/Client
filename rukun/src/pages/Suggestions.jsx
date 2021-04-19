@@ -57,19 +57,21 @@ export default function Suggestions() {
 
             <div className="card card-tumpul flex-grow-1 body-section no-border">
               <br/>
-              <div className="container-fluid" style={{textAlign: "start"}}>
+              <div className="container-fluid" style={{textAlign: "start", marginTop: 50}}>
                 <h3>Suggestions</h3>
-              <div className="mb-3 mt-3 d-flex justify-content-end align-items-center" >
+              <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
               <div className="d-flex justify-content-end">
-                <button type="button" className="btn btn-sm btn-outline-info" onClick={handleShow} style={{marginRight: 10, width: 120, height:30, marginTop: 2}} >Add Suggestion</button>
                 <div style={{marginRight: 5, width: 100}}>
-                  <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>
+                  <label style={{marginRight: 5, width: 55, marginTop: 5}}>Village:</label>
                 </div>
-                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30, width: 180}}/>
+                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
                 <div style={{marginRight: 5, width: 120}}>
                   <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
                 </div>
-                <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30, width: 180}}/>
+                <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/> <br/>
+                <div>
+                  <button type="button" className="btn btn-sm btn-outline-info" onClick={handleShow} style={{marginRight: 10, width: 120, height:30, marginTop: 2}} >Add Suggestion</button>
+                </div>
                 <Modal show={show} 
                   onHide={handleClose} 
                   backdrop="static"
@@ -101,7 +103,7 @@ export default function Suggestions() {
               </div >
               
               </div>
-              <div className="overflow-auto" style={{height: 550}}>
+              <div className="overflow-auto mr-5" style={{height: 550}}>
                 {
                   loading ? <ClipLoader/> :
                   data.Suggestions?.map((suggestion, index) => {
