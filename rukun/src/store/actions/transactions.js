@@ -27,6 +27,7 @@ export function setTransactionsAsync() {
 }
 
 export function addTransactionsAsync(payload) {
+  console.log(payload, 'payload');
   
   return (dispatch) => {
     dispatch(setLoading(true))
