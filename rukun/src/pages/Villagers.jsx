@@ -17,9 +17,9 @@ export default function Villagers() {
     dispatch(getVillagers())
   }, [dispatch])
 
-  if(loading) {
-    return <ClipLoader></ClipLoader>
-  }
+  // if(loading) {
+  //   return <ClipLoader></ClipLoader>
+  // }
 
   return (
     <div>

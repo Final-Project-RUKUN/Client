@@ -77,21 +77,14 @@ export default function Home() {
     return income
   }
 
-  function currentBalance() {
-    const initialValue = data?.balance
-    const income = totalIncomeInt()
-    const expense = totalExpenseInt()
-
-    return initialValue + income - expense
-  }
 
   function toIDR (value) {
     return `Rp. ${value?.toLocaleString()}`
   }
 
-  if(loading) {
-    return <ClipLoader></ClipLoader>
-  }
+  // if(loading) {
+  //   return <ClipLoader></ClipLoader>
+  // }
 
   return (
     <div>

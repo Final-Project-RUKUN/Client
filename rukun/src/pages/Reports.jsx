@@ -53,9 +53,9 @@ export default function Reports() {
     return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
   }
 
-  if(loading) {
-    return <ClipLoader></ClipLoader>
-  }
+  // if(loading) {
+  //   return <ClipLoader></ClipLoader>
+  // }
 
   return (
     <div>
