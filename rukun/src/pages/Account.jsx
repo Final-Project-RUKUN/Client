@@ -39,7 +39,7 @@ export default function Account() {
             <AccountCard/><br/> */}
 
             <h5>Village Detail</h5><br/>
-              <VillageCard/>
+              <VillageCard village={data}/>
             </div>
           </div>
         </div>
