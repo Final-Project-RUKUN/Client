@@ -1,12 +1,15 @@
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import AccountCard from '../components/AccountCard'
 import VillageCard from '../components/VillageCard'
+import { useSelector, useDispatch } from 'react-redux'
 
 export default function Account() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const data = useSelector(state => state.admin.data)
+  const admin = useSelector(state => state.users.currentUser)
 
   return (
     <div>
@@ -23,14 +26,14 @@ export default function Account() {
             
             <div className="mb-3 mt-3 mr-5 d-flex justify-content-start align-items-center" >
               <div>
-                <h5>Desa Catur, 16 April 2021</h5>
+                <h5>Desa {data.name}, 16 April 2021</h5>
               </div>
             </div>
-            {/* <h5>Account Detail</h5>
-            <AccountCard/><br/> */}
+            <h5>Account Detail</h5>
+            <AccountCard admin={admin}/><br/>
 
             <h5>Village Detail</h5>
-            <VillageCard/>
+            <VillageCard village={data}/>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap'
 
 
-export default function VillageCard() {
+export default function VillageCard(data) {
   const history = useHistory()
   const [show, setShow] = useState(false);
   const [name, setName] = useState('')
@@ -11,6 +11,7 @@ export default function VillageCard() {
   const [code, setCode] = useState('')
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  console.log(data, '<<<<<<<<< data village card');
 
 
   function editName(event) {
@@ -39,9 +40,9 @@ export default function VillageCard() {
     <div className="card card-body mb-2">
       <div className="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
         <div className="media-body">
-          <h6>Name: Desa Catur</h6><br/>
-          <h6>Location: Fakfak, Papua</h6><br/>
-          <h6>Invitation Code: Nganu123456</h6><br/>
+          <h6>Name: {data.village.name}</h6><br/>
+          <h6>Location: {data.village.location}</h6><br/>
+          <h6>Invitation Code: {data.village.invitation_code}</h6><br/>
           <button type="button" className="btn btn-outline-warning" onClick={handleShow}>Edit</button>
       </div>
     </div>

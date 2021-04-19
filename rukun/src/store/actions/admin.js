@@ -12,6 +12,10 @@ export function setLogin(payload) {
   return {type : 'login/setLogin', payload}
 }
 
+export function setCurrentId(payload) {
+  return {type : 'currentId/setCurrentId', payload}
+}
+
 export function adminRegister(payload) {
   console.log(payload);
   return (dispatch) => {
@@ -37,10 +41,12 @@ export function adminLogin(payload) {
       method: "POST",
       data: payload
     })
-    .then(data => {
+    .then(({data}) => {
       console.log(data, '>>>data<<<');
-      localStorage.setItem('access_token', data.data)
+      localStorage.setItem('access_token', data.access_token)
+      localStorage.setItem('id', data.id)
       dispatch(setLogin(true))
+      dispatch(setCurrentId(data.id))
     })
     .catch(err => {
       console.log(err);
@@ -66,7 +72,7 @@ export function getData() {
       }
     })
     .then(({data}) => {
-      console.log(data);
+      console.log(data, 'data transaction');
       dispatch(setData(data))
     })
     .catch(err => {
