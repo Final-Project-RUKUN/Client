@@ -2,18 +2,32 @@ import React, { useEffect } from 'react'
 import Sidebar from '../components/Sidebar'
 import ReportCard from '../components/ReportCard'
 import '../styles/Table.css'
+import ClipLoader from "react-spinners/ClipLoader"
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setTransactionsAsync } from '../store/actions/transactions'
 
 export default function Reports() {
-
+  const data = useSelector(state => state.admin.data)
   const transactions = useSelector(state => state.transactions.data)
+  const loading = useSelector(state => state.transactions.loading)
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log(totalIncome(), 'function');
     dispatch(setTransactionsAsync())
   }, [dispatch])
+
+  function totalIncome() {
+    const income = transactions.filter(transaction => transaction.type === "income")
+
+    return console.log(income, 'incomee');
+
+  }
+
+  if(loading) {
+    return <ClipLoader></ClipLoader>
+  }
 
   return (
     <div>
@@ -30,9 +44,14 @@ export default function Reports() {
               {/* content */}
               <div className="mb-2 d-flex justify-content-end align-items-center" >
                 <form action="" className="d-flex justify-content-end">
-                  <input type="text" value="Desa Catur" disabled="disabled" style={{marginRight: 10, height: 30}}/>
-                  <input type="date" style={{marginRight: 10, height: 30}}/>
-                  <button type="button" className="btn btn-sm btn-outline-primary" type="submit" style={{marginRight: 10, height: 30, marginTop: 2}}>Search</button>
+                  <div style={{marginRight: 5, width: 100}}>
+                    <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>
+                  </div>
+                  <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
+                  <div style={{marginRight: 5, width: 120}}>
+                    <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
+                  </div>
+                  <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
                 </form>
               </div>
 
@@ -48,7 +67,12 @@ export default function Reports() {
                             <i className="icon-pencil primary font-large-2 float-left"></i>
                           </div>
                           <div className="media-body text-right">
-                            <h3>3</h3>
+                            <h3>                          {
+                            loading ? <ClipLoader></ClipLoader> :
+                            <h3>{
+                            data.Transactions?.length === 0 ? 0 : data.Transactions?.length 
+                            }</h3>
+                          }</h3>
                             <span>Transactions</span>
                           </div>
                         </div>
@@ -107,7 +131,8 @@ export default function Reports() {
                 </thead>
                 <tbody style={{height: 380}}>
                   {
-                    transactions.map((transaction, index) => {
+                    loading ? <ClipLoader></ClipLoader> :
+                    transactions?.map((transaction, index) => {
                       return <ReportCard transaction={transaction} key={transaction.id} index={index}></ReportCard>
                     })
                   }

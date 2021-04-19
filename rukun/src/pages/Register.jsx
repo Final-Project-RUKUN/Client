@@ -42,7 +42,7 @@ export default function Register() {
       name, username, password, nameVillage: villageName, location, balance
     }
     dispatch(adminRegister(data))
-    toast.success(`${villageName} created`, {
+    toast.info(`${villageName} created`, {
       autoClose: 3000,
       position: toast.POSITION.TOP_RIGHT,
     })

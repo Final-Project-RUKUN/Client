@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addTransactionsAsync } from '../store/actions/transactions'
+import { useHistory } from 'react-router-dom'
+import { setSuggestionsAsync, newSuggestion } from '../store/actions/suggestions'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
+
 
 export default function TransactionForm() {
+  const history = useHistory()
+
   const [data, setData] = useState({
     title: '',
     amount: '',
@@ -29,7 +37,19 @@ export default function TransactionForm() {
     if (errors.length) {
       setError(true)
     } else {
+      // console.log(data);
+      toast.info(`${data.title} added`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
+      })
       dispatch(addTransactionsAsync(data))
+      setData({
+        title: '',
+        amount: '',
+        category: '',
+        note: '',
+        status: 'panding'
+      })
     }
 
   }
