@@ -3,6 +3,7 @@ import '../styles/Dashboard.css'
 import Sidebar from '../components/Sidebar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../store/actions/admin'
+import { getAdmin } from '../store/actions/users'
 import { setTransactionsAsync } from '../store/actions/transactions'
 import ClipLoader from "react-spinners/ClipLoader"
 import { useHistory } from "react-router-dom"
@@ -21,6 +22,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(setTransactionsAsync())
     dispatch(getData())
+    dispatch(getAdmin())
   },[dispatch])
 
   function totalIncome() {
