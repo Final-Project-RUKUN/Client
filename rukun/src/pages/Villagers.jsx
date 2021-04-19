@@ -14,7 +14,6 @@ export default function Villagers() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log(village);
     dispatch(getVillagers())
   }, [dispatch])
 

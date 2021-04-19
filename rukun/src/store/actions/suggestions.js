@@ -5,6 +5,7 @@ export function setSuggestions(payload) {
 }
 
 export function setOneSuggestions(payload) {
+  console.log(payload);
   return { type: 'suggestions/setOneSuggestions', payload }
 }
 
@@ -57,7 +58,6 @@ export function newSuggestion (data) {
 export function getOneSuggestion(data) {
   const id = data.id
   return (dispatch) => {
-    
     axios({
       url: `http://localhost:4000/suggestions/${id}`,
       method: 'GET',
@@ -72,27 +72,6 @@ export function getOneSuggestion(data) {
   }
 }
 
-export function updateSuggestion(data) {
-  const id = data.id
-  return (dispatch) => {
-    
-    axios({
-      url: `http://localhost:4000/suggestions/${id}`,
-      method: 'PUT',
-      headers: {
-        access_token: localStorage.access_token
-      },
-      data: {
-        title: data.title,
-        description: data.description
-      }
-    })
-    .then(({data}) => {
-      dispatch(setOneSuggestions(data))
-    })
-    .catch(err => console.log(err))
-  }
-}
 
 export function deleteSuggestion(data) {
   return (dispatch) => {

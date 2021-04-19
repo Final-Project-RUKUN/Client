@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar'
 import ReportCard from '../components/ReportCard'
 import '../styles/Table.css'
 import ClipLoader from "react-spinners/ClipLoader"
+import Moment from 'react-moment';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setTransactionsAsync } from '../store/actions/transactions'
@@ -94,12 +95,12 @@ export default function Reports() {
                             <i className="icon-pencil primary font-large-2 float-left"></i>
                           </div>
                           <div className="media-body text-right">
-                            <h3>                          {
+                          {
                             loading ? <ClipLoader></ClipLoader> :
                             <h3>{
                             data.Transactions?.length === 0 ? 0 : data.Transactions?.length 
                             }</h3>
-                          }</h3>
+                          }
                             <span>Transactions</span>
                           </div>
                         </div>
@@ -157,7 +158,7 @@ export default function Reports() {
               <table className="table">
                 <thead className="thead-light">
                   <tr>
-                    <th scope="col">Friday, 16 April 2021</th>
+                    <th scope="col"><Moment format="D MMMM YYYY" withTitle>{new Date()}</Moment></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>

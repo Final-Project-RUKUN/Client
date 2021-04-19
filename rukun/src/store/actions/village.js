@@ -20,7 +20,7 @@ export function getVillagers() {
       }
     })
     .then(({data}) => {
-      console.log(data,' fetch');
+      // console.log(data,' fetch');
       dispatch(setData(data))
     })
     .catch(err => {
@@ -45,7 +45,7 @@ export function deleteVillagers(data) {
     })
     .then(({data}) => {
       dispatch(getVillagers())
-      console.log(data);
+      // console.log(data);
     })
     .catch(err => {
       console.log(err);
