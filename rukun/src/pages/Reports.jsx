@@ -14,7 +14,7 @@ export default function Reports() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log(totalIncome(), 'function');
+    // console.log(totalIncome(), 'function');
     dispatch(setTransactionsAsync())
   }, [dispatch])
 
@@ -140,7 +140,7 @@ export default function Reports() {
                               <h3>{ totalExpance() }</h3>
                               : <></>
                             }
-                            <span>Current Balance</span>
+                            <span>Total Expense</span>
                           </div>
                         </div>
                       </div>

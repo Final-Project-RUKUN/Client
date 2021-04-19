@@ -61,15 +61,15 @@ export default function Suggestions() {
                 <h3>Suggestions</h3>
               <div className="mb-3 mt-3 d-flex justify-content-end align-items-center" >
               <div className="d-flex justify-content-end">
-                <button type="button" className="btn btn-sm btn-outline-info" onClick={handleShow} style={{marginRight: 5, width: 350}} >Add Suggestion</button>
+                <button type="button" className="btn btn-sm btn-outline-info" onClick={handleShow} style={{marginRight: 10, width: 120}} >Add Suggestion</button>
                 <div style={{marginRight: 5, width: 100}}>
                   <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>
                 </div>
-                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
+                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 10, height: 30, width: 180}}/>
                 <div style={{marginRight: 5, width: 120}}>
                   <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
                 </div>
-                <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
+                <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30, width: 180}}/>
                 <Modal show={show} 
                   onHide={handleClose} 
                   backdrop="static"

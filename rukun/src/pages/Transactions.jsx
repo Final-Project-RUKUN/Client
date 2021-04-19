@@ -20,7 +20,7 @@ export default function Transaction() {
             {/* content */}
             <h3>Transactions</h3>
             
-            <div className="mb-3 mt-3 mr-5 d-flex justify-content-end align-items-center" >
+            <div className="mb-3 mt-3 d-flex justify-content-end align-items-center" >
             <div className="d-flex justify-content-end">
                 <div style={{marginRight: 5, width: 100}}>
                   <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>

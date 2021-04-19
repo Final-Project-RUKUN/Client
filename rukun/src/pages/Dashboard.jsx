@@ -13,9 +13,77 @@ toast.configure();
 export default function Home() {
   const data = useSelector(state => state.admin.data)
   const loading = useSelector(state => state.admin.loading)
+  const transactions = useSelector(state => state.transactions.data)
   const login = useSelector(state => state.admin.login)
   const dispatch = useDispatch()
   const history = useHistory()
+
+  useEffect(() => {
+    console.log(currentBalance());
+  },[])
+
+  function totalIncome() {
+    // const income = transactions.filter(transaction => transaction.type === "income")
+    let income = 0
+
+    transactions.forEach(transaction => {
+      if (transaction.type === "income") {
+        income = income + +transaction.amount
+      }
+    })
+
+    var rupiah = '';		
+    var angkarev = income.toString().split('').reverse().join('');
+    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+    return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
+  }
+
+  function totalExpance() {
+    // const income = transactions.filter(transaction => transaction.type === "income")
+    let income = 0
+
+    transactions.forEach(transaction => {
+      if (transaction.type === "expance") {
+        income = income + +transaction.amount
+      }
+    })
+
+    var rupiah = '';		
+    var angkarev = income.toString().split('').reverse().join('');
+    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+    return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
+  }
+
+  function totalIncomeInt() {
+    let income = 0
+
+    transactions.forEach(transaction => {
+      if (transaction.type === "income") {
+        income = income + +transaction.amount
+      }
+    })
+    return income
+  }
+
+  function totalExpenseInt() {
+    let income = 0
+
+    transactions.forEach(transaction => {
+      if (transaction.type === "expance") {
+        income = income + +transaction.amount
+      }
+    })
+    return income
+  }
+
+  function currentBalance() {
+    const initialValue = data?.balance
+    const income = totalIncomeInt()
+    const expense = totalExpenseInt()
+
+    return initialValue + income - expense
+  }
+
 
   useEffect(() => {
     dispatch(getData())
@@ -68,7 +136,11 @@ export default function Home() {
                         </div>
                         <div className="media-body">
                           <h6>TOTAL INCOME</h6>
-                          <h3>Rp. 27.000.000</h3>
+                          {
+                            transactions ?
+                            <h3>{ totalIncome() }</h3>
+                            : <></>
+                          }
                         </div>
                       </div>
                     </div>
@@ -88,7 +160,11 @@ export default function Home() {
                           </div>
                         <div className="media-body">
                           <h6>TOTAL EXPENSE</h6>
-                          <h3>Rp. 12.000.000</h3>
+                          {
+                            transactions ?
+                            <h3>{ totalExpance() }</h3>
+                            : <></>
+                          }
                         </div>
                         </div>
                       </div>
@@ -113,7 +189,7 @@ export default function Home() {
                           <h6>CURRENT BALANCE</h6>
                           { 
                             loading ? <ClipLoader></ClipLoader> :
-                            (<h3>{toIDR(data?.balance)}</h3>)
+                            (<h3>{toIDR(currentBalance())}</h3>)
                           }
                         </div>
                       </div>
