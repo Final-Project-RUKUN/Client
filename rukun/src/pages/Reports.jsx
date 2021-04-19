@@ -42,7 +42,7 @@ export default function Reports() {
               <div className="container-fluid" style={{textAlign: "start"}}>
                 <h3>Reports</h3>
               {/* content */}
-              <div className="mb-2 d-flex justify-content-end align-items-center" >
+              <div className="mb-3 mt-3 d-flex justify-content-end align-items-center" >
                 <form action="" className="d-flex justify-content-end">
                   <div style={{marginRight: 5, width: 100}}>
                     <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>

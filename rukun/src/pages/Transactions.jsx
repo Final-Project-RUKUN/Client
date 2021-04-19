@@ -18,7 +18,7 @@ export default function Transaction() {
             <br/>
             <div className="container-fluid" style={{textAlign: "start"}}>
             {/* content */}
-            <h2>Transactions</h2>
+            <h3>Transactions</h3>
             
             <div className="mb-3 mt-3 mr-5 d-flex justify-content-end align-items-center" >
             <div className="d-flex justify-content-end">
