@@ -58,14 +58,14 @@ export default function Register() {
       <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
         <div className="card card0 border-0">
           <div className="row d-flex">
-            <div className="col-lg-6 border-line" >
+            <div className="col-lg-6 border-line mt-4" >
               <div className="card2 card border-0 px-4 py-5 mt-1" style={{padding: 0}}>
               <form onSubmit={(event) => register(event)}>
                 <div className="row px-3"> 
                   <label className="mb-1">
                     <h6 className="mb-0 text-sm">Name</h6>
                   </label> 
-                  <input className="mb-2" type="text" placeholder="Your name" onChange={addName} required/> 
+                  <input className="mb-2" type="text" placeholder="Your Name" onChange={addName} required/> 
                 </div>
                 <div className="row px-3"> 
                   <label className="mb-1">
@@ -97,7 +97,7 @@ export default function Register() {
                   </label> 
                   <input className="mb-2" type="number" placeholder="Balance" required onChange={addBalance}/> 
                 </div>
-                <div className="row mb-3 px-3"> 
+                <div className="row mb-3 px-3 mt-4"> 
                   <button type="submit" className="btn btn-blue text-center">Register</button> 
                 </div>
                 <div className="row mb-3 px-3"> 
@@ -110,10 +110,10 @@ export default function Register() {
           <div className="col-lg-6">
             <div className="card1 pb-5">
               <div className="row d-flex justify-content-end" style={{width: 580}}>  
-                <img src="" className="logo" placeholder="logo rukun"/> 
+                <img src="../../rukun-logo-long-blue.png" style={{width: 175, marginTop:60, marginLeft:70}} placeholder="logo rukun"/> 
               </div>
               <div className="row justify-content-center mt-4 mb-5" style={{padding: 0, width: 580}}>   
-                <img src="" className="image" placeholder="image biar bagus"/> 
+                <img src="../../rukun-register.png" style={{width: 500, marginTop:20, marginBottom:100, marginLeft:50}} /> 
               </div>
             </div>
           </div>
