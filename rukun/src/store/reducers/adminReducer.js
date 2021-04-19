@@ -2,6 +2,8 @@ const initialState = {
   data: [{
     balance: 0,
     name: '',
+    location: '',
+    invitation_code: '',
     Transactions: []
   }],
   loading: false,
