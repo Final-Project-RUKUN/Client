@@ -14,6 +14,7 @@ export default function Villagers() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log(village);
     dispatch(getVillagers())
   }, [dispatch])
 
@@ -32,13 +33,18 @@ export default function Villagers() {
             <br/>
             <div className="container-fluid" style={{textAlign: "start"}}>
             {/* content */}
+            <h3>Villagers List</h3>
             
-            <div className="mb-5 mt-3 mr-3 d-flex justify-content-start align-items-center" >
-              <div>
-                {
-                  loading ? <ClipLoader></ClipLoader> :
-                <h2>{village?.name}</h2>
-                }
+            <div className="mb-3 mt-3 d-flex justify-content-end align-items-center" >
+              <div className="d-flex justify-content-end">
+                <div style={{marginRight: 5, width: 100}}>
+                  <label style={{marginRight: 5, width: 100, marginTop: 5}}>Village Name:</label>
+                </div>
+                <input type="text" value={village?.name} disabled="disabled" style={{marginRight: 10, height: 30}}/>
+                <div style={{marginRight: 5, width: 120}}>
+                  <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
+                </div>
+                <input type="text" value={village?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
               </div>
             </div>
             <h4>Village Member</h4>
