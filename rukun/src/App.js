@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import Account from './pages/Account'
+import Announcements from './pages/Announcements'
 import Transactions from './pages/Transactions'
 import Suggestions from './pages/Suggestions'
 import Villagers from './pages/Villagers'
@@ -33,6 +34,9 @@ function App() {
       </Route>
       <Route path="/account">
         <Account></Account>
+      </Route>
+      <Route path="/announcements">
+        <Announcements></Announcements>
       </Route>
       <Route path="/suggestions">
         <Suggestions></Suggestions>
