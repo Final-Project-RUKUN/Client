@@ -10,7 +10,7 @@ export default function ReportCard(props) {
 
   return (
     <tr>
-      <th scope="row">{type}</th>
+      <th scope="row">{type === "expance" ? "expense" : "income"}</th>
       <td>{category}</td>
       <td>{title}</td>
       <td>{note}</td>

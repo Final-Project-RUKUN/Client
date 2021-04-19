@@ -6,6 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader"
 
 import { useSelector, useDispatch } from 'react-redux'
 import { setTransactionsAsync } from '../store/actions/transactions'
+import { getData } from '../store/actions/admin'
 
 export default function Reports() {
   const data = useSelector(state => state.admin.data)
@@ -16,6 +17,7 @@ export default function Reports() {
   useEffect(() => {
     // console.log(totalIncome(), 'function');
     dispatch(setTransactionsAsync())
+    dispatch(getData())
   }, [dispatch])
 
   function totalIncome() {

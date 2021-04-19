@@ -48,6 +48,7 @@ export default function TransactionForm() {
         amount: '',
         category: '',
         note: '',
+        type: data.type,
         status: 'panding'
       })
     }
@@ -61,7 +62,7 @@ export default function TransactionForm() {
             {
               isError ?
               <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Please!</strong> fill in all data.
+                Please <strong>fill in all data!.</strong> 
                 <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -74,9 +75,9 @@ export default function TransactionForm() {
               <input type="number" name="amount" placeholder="5.000.000" value={data.amount} onChange={handleInput} style={{ margin: 10, width: 350 }} />
               <input type="text" name="category" placeholder="Iuran Rutin" value={data.category} onChange={handleInput} style={{ margin: 10, width: 350 }} />
               <input type="text" name="note" placeholder="Untuk 5 tahun" value={data.note} onChange={handleInput} style={{ margin: 10, width: 350 }} />
-              <select className="form-select" aria-label="Default select example" name="type" onChange={handleInput} style={{ margin: 10, width: 350 }}>
-                <option value="income">Pemasukan</option>
-                <option value="expance">pengeluaran</option>
+              <select className="form-select" aria-label="Default select example" name="type" onChange={handleInput} style={{ margin: 10, width: 350, height:42.8 }}>
+                <option value="income">Income</option>
+                <option value="expance">Expense</option>
               </select>
               <button className="btn btn-sm btn-outline-primary" type="submit" style={{ margin: 10, width: 100 }}>Submit</button>
             </form>

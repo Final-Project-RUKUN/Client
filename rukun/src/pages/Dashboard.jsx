@@ -3,12 +3,12 @@ import '../styles/Dashboard.css'
 import Sidebar from '../components/Sidebar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../store/actions/admin'
+import { setTransactionsAsync } from '../store/actions/transactions'
 import ClipLoader from "react-spinners/ClipLoader"
 import { useHistory } from "react-router-dom"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
-
 
 export default function Home() {
   const data = useSelector(state => state.admin.data)
@@ -19,8 +19,9 @@ export default function Home() {
   const history = useHistory()
 
   useEffect(() => {
-    console.log(currentBalance());
-  },[])
+    dispatch(setTransactionsAsync())
+    dispatch(getData())
+  },[dispatch])
 
   function totalIncome() {
     // const income = transactions.filter(transaction => transaction.type === "income")
@@ -83,11 +84,6 @@ export default function Home() {
 
     return initialValue + income - expense
   }
-
-
-  useEffect(() => {
-    dispatch(getData())
-  }, [dispatch])
 
   function toIDR (value) {
     return `Rp. ${value?.toLocaleString()}`
@@ -189,7 +185,7 @@ export default function Home() {
                           <h6>CURRENT BALANCE</h6>
                           { 
                             loading ? <ClipLoader></ClipLoader> :
-                            (<h3>{toIDR(currentBalance())}</h3>)
+                            (<h3>{toIDR(data?.balance)}</h3>)
                           }
                         </div>
                       </div>
@@ -208,7 +204,7 @@ export default function Home() {
                           <div className="align-self-center">
                             <i className="icon-speech warning font-large-2 mr-2"></i>
                           </div>
-                          <div className="media-body">
+                          <div className="media-body" onClick={() => history.push('/reports')}>
                           <h6>TRANSACTIONS</h6>
                           {
                             loading ? <ClipLoader></ClipLoader> :
