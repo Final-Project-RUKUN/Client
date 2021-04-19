@@ -2,7 +2,7 @@ import React,{ useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap'
 
-export default function AccountCard() {
+export default function AccountCard(props) {
   const history = useHistory()
   const [show, setShow] = useState(false);
   const [name, setName] = useState('')
@@ -11,7 +11,6 @@ export default function AccountCard() {
   const [password, setPassword] = useState('')
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
 
   function editName(event) {
     setName(event.target.value)
@@ -39,9 +38,9 @@ export default function AccountCard() {
     <div className="card card-body mb-2">
     <div className="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
       <div className="media-body">
-        <h6>Name: Catur</h6><br/>
-        <h6>Username: caturkades</h6><br/>
-        <h6>Role: Kades</h6><br/>
+        <h6>Name: {props.admin.name}</h6><br/>
+        <h6>Username: {props.admin.username}</h6><br/>
+        <h6>Role: {props.admin.role}</h6><br/>
         <button type="button" className="btn btn-outline-warning" onClick={handleShow}>Edit</button>
       </div>
     </div>

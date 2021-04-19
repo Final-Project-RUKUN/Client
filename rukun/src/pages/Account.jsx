@@ -6,6 +6,7 @@ import VillageCard from '../components/VillageCard'
 
 export default function Account() {
   const data = useSelector(state => state.admin.data)
+  const admin = useSelector(state => state.users.admin)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -35,11 +36,11 @@ export default function Account() {
                 <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
               </div>
             </div>
-            {/* <h5>Account Detail</h5>
-            <AccountCard/><br/> */}
+            <h5>Account Detail</h5>
+            <AccountCard admin={admin}/><br/>
 
             <h5>Village Detail</h5><br/>
-              <VillageCard/>
+              <VillageCard village={data}/>
             </div>
           </div>
         </div>

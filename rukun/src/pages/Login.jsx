@@ -55,7 +55,7 @@ export default function Login() {
                   <img src="../../rukun-logo-long-blue.png" alt="logo" style={{width: 175, marginTop:60, marginLeft:70}}  placeholder="logo rukun"/> 
                 </div>
                 <div className="row px-3 justify-content-center mt-4 mb-5">   
-                  <img src="../../rukun-people.png" alt="logo" className="" style={{width: 600, marginTop:20, marginBottom:55, marginLeft:15}} placeholder="image login"/> 
+                  <img src="../../rukun-people.png" alt="logo" className="d-flex" style={{width: 600, marginTop:20, marginBottom:55, marginLeft:15}} placeholder="image login"/> 
                 </div>
               </div>
             </div>
