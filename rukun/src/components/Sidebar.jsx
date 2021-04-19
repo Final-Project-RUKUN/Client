@@ -28,6 +28,9 @@ export default function Sidebar() {
   function toAccount() {
     history.push("/account")
   }
+  function toAnnouncements() {
+    history.push("/announcements")
+  }
 
   function logout() {
     dispatch(adminLogout())
@@ -47,6 +50,10 @@ export default function Sidebar() {
           <div className="d-flex align-items-center" onClick={toReports}>
               <i className="fa fa-home" style={{fontSize:"3rem", color:"#1abc9c"}}></i>
               <h6 className="m-0 font" style={{color: "white"}}>Reports</h6>
+          </div>
+          <div className="d-flex align-items-center" onClick={toAnnouncements}>
+              <i className="fa fa-boxes" style={{fontSize:"3rem", color:"#1abc9c"}}></i>
+              <h6 className="m-0 font" style={{color: "white"}}>Announcements</h6>
           </div>
           <div className="d-flex align-items-center" onClick={toTransactions}>
               <i className="fa fa-shopping-basket" style={{fontSize:"3rem", color:"#1abc9c"}}></i>
