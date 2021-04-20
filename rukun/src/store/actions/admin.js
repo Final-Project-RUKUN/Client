@@ -41,9 +41,9 @@ export function adminLogin(payload) {
       method: "POST",
       data: payload
     })
-    .then(({data})=> {
-      console.log(data, '>>>data<<<');
-      localStorage.setItem('access_token', data.access_token)
+    .then(data=> {
+      // console.log(data, '>>>data<<<');
+      localStorage.setItem('access_token', data.data)
       dispatch(setLogin(true))
     })
     .catch(err => {
@@ -56,7 +56,7 @@ export function adminLogin(payload) {
 export function adminLogout() {
   return (dispatch) => {
     localStorage.removeItem('access_token')
-    dispatch(setLogin(false))
+    dispatch(setLogin(null))
   }
 }
 

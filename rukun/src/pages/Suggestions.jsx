@@ -58,7 +58,7 @@ export default function Suggestions() {
             <div className="card card-tumpul flex-grow-1 body-section no-border">
               <br/>
               <div className="container-fluid" style={{textAlign: "start", marginTop: 50}}>
-                <h3>Suggestions</h3>
+                <h3>Informations</h3>
               <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
               <div className="d-flex justify-content-end">
                 <div style={{marginRight: 5, width: 100}}>
@@ -70,14 +70,14 @@ export default function Suggestions() {
                 </div>
                 <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/> <br/>
                 <div>
-                  <button type="button" className="btn btn-sm btn-outline-info" onClick={handleShow} style={{marginRight: 10, width: 120, height:30, marginTop: 2}} >Add Suggestion</button>
+                  <button type="button" className="btn btn-sm btn-outline-info" onClick={handleShow} style={{marginRight: 10, width: 120, height:30, marginTop: 2}} >Add Information</button>
                 </div>
                 <Modal show={show} 
                   onHide={handleClose} 
                   backdrop="static"
                 >
                   <Modal.Header closeButton>
-                    <Modal.Title>Add Suggestion</Modal.Title>
+                    <Modal.Title>Add Information</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
                   <form onSubmit={(event) => addSuggestion(event)}>
@@ -86,9 +86,9 @@ export default function Suggestions() {
                       <input type="text" className="form-control" placeholder="Title" onChange={addTitle}/>
                     </div>
                     <div className="form-group">
-                      <label>Suggestion</label>
-                      <textarea placeholder="200 character max " maxLength= "200" onChange={addDescription} />
-                      <small id="emailHelp" className="form-text text-muted">Voice your suggestion here!</small>
+                      <label>Information</label>
+                      <textarea placeholder="Max 200 characters" maxLength= "200" onChange={addDescription} />
+                      <small id="emailHelp" className="form-text text-muted">Voice your information here!</small>
                     </div>
                     <div className="d-flex justify-content-end">
                       <button type="submit" className="btn btn-outline-primary" style={{marginRight:0}}>Submit</button>
@@ -96,7 +96,7 @@ export default function Suggestions() {
                   </form>
                   </Modal.Body>
                   <Modal.Footer>
-                  <small id="emailHelp" className="form-text text-muted">Your suggestion will be very helpful in improving our village!</small>
+                  <small id="emailHelp" className="form-text text-muted">Your information will be very helpful in improving our village!</small>
                   </Modal.Footer>
                 </Modal>
 

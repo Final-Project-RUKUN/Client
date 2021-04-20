@@ -63,8 +63,8 @@ export default function AnnouncementForm() {
             }
           <div className="mb-2 d-flex justify-content-start" >
             <form onSubmit={handleSubmit}>
-              <input type="text" name="title" placeholder="Iuran Keamanan Naik Per Bulan Ini" value={data.title} onChange={handleInput} style={{ margin: 10, width: 350 }} /> <br></br>
-              <input type="textarea" name="description" placeholder="Desciption of the Title" value={data.description} onChange={handleInput} style={{ margin: 10, width: 500, height: 200, alignItems: 'start' }} /> <br></br>
+              <input type="text" name="title" placeholder="Title" value={data.title} onChange={handleInput} style={{ margin: 10, width: 350 }} /> <br></br>
+              <input type="textarea" name="description" placeholder="Desciption" value={data.description} onChange={handleInput} style={{ margin: 10, width: 500, height: 200, alignItems: 'start' }} /> <br></br>
               <button className="btn btn-sm btn-outline-primary" type="submit" style={{ margin: 10, width: 100 }}>Submit</button>
             </form>
           </div>

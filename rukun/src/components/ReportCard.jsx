@@ -12,7 +12,7 @@ export default function ReportCard(props) {
     <tr>
       <th scope="row">{type === "expance" ? "expense" : "income"}</th>
       <td>{category}</td>
-      <td>{props.transaction.User.name}</td>
+      <td>{note}</td>
       <td><Moment format="D MMMM YYYY, HH:mm a" withTitle>{createdAt}</Moment></td>
       <td style={{textAlign:"end", color: (type === "expance") ? 'red' : 'black'}}>{toIDR(amount)}</td>
     </tr>

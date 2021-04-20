@@ -71,10 +71,10 @@ export default function TransactionForm() {
             }
           <div className="mb-2 d-flex justify-content-start align-items-center" >
             <form onSubmit={handleSubmit}>
-              <input type="text" name="title" placeholder="Iuran Keamanan" value={data.title} onChange={handleInput} style={{ margin: 10, width: 350 }} />
-              <input type="number" name="amount" placeholder="5.000.000" maxLength="15" value={data.amount} onChange={handleInput} style={{ margin: 10, width: 350 }} />
-              <input type="text" name="category" placeholder="Iuran Rutin" value={data.category} onChange={handleInput} style={{ margin: 10, width: 350 }} />
-              <input type="text" name="note" placeholder="Untuk 5 tahun" value={data.note} onChange={handleInput} style={{ margin: 10, width: 350 }} />
+              <input type="text" name="title" placeholder="Title (eg. Iuran Keamanan)" value={data.title} onChange={handleInput} style={{ margin: 10, width: 350 }} />
+              <input type="number" name="amount" placeholder="Amount (eg. 500.000)" maxLength="15" value={data.amount} onChange={handleInput} style={{ margin: 10, width: 350 }} />
+              <input type="text" name="category" placeholder="Category (eg. Iuran Rutin)" value={data.category} onChange={handleInput} style={{ margin: 10, width: 350 }} />
+              <input type="text" name="note" placeholder="Note (eg. Marni by cash)" value={data.note} onChange={handleInput} style={{ margin: 10, width: 350 }} />
               <select className="form-select" aria-label="Default select example" name="type" onChange={handleInput} style={{ margin: 10, width: 350, height:42.8 }}>
                 <option value="income">Income</option>
                 <option value="expance">Expense</option>
