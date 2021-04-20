@@ -20,6 +20,7 @@ export function setTransactionsAsync() {
       }
     })
       .then(({data}) => {
+        console.log(data);
         dispatch(setTransactions(data.Transactions))
       })
       .catch(err => console.log(err))

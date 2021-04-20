@@ -1,12 +1,13 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import { useHistory } from "react-router-dom"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { adminLogout } from '../store/actions/admin'
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
 export default function Sidebar() {
+  const login = useSelector(state => state.admin.login)
   const history = useHistory()
   const dispatch = useDispatch()
 

@@ -3,17 +3,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { deleteVillagers } from '../store/actions/village'
 import { changeAdmin } from '../store/actions/admin'
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom"
 import "react-toastify/dist/ReactToastify.css";
 import Swal from 'sweetalert2'
 toast.configure();
-
-
 
 export default function VillagerList(props) {
   const { id, name, role, VillageId } = props.user
   const villageName = props.village
   const index = props.index
   const dispatch = useDispatch()
+  const history = useHistory()
 
   function destroyVillager(id) {
     if(role === 'admin') {
@@ -32,6 +32,7 @@ export default function VillagerList(props) {
         if (result.isConfirmed) {
           dispatch(deleteVillagers(id))
           Swal.fire(`${name} deleted`, '', 'success')
+          history.push('/')
         }
       })
     }

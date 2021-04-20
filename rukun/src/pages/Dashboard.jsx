@@ -57,16 +57,6 @@ export default function Home() {
     return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
   }
 
-  function totalIncomeInt() {
-    let income = 0
-
-    transactions.forEach(transaction => {
-      if (transaction.type === "income") {
-        income = income + +transaction.amount
-      }
-    })
-    return income
-  }
 
   function totalExpenseInt() {
     let income = 0
