@@ -1,37 +1,37 @@
 import React,{ useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Modal, Button } from 'react-bootstrap'
+// import { Modal, Button } from 'react-bootstrap'
 
 
 export default function VillageCard(props) {
   const history = useHistory()
-  const [show, setShow] = useState(false);
-  const [name, setName] = useState('')
-  const [location, setLocation] = useState('')
-  const [code, setCode] = useState('')
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const [show, setShow] = useState(false);
+  // const [name, setName] = useState('')
+  // const [location, setLocation] = useState('')
+  // const [code, setCode] = useState('')
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
-  function editName(event) {
-    setName(event.target.value)
-  }
+  // function editName(event) {
+  //   setName(event.target.value)
+  // }
 
-  function editLocation(event) {
-    setLocation(event.target.value)
-  }
+  // function editLocation(event) {
+  //   setLocation(event.target.value)
+  // }
 
-  function editCode(event) {
-    setCode(event.target.value)
-  }
+  // function editCode(event) {
+  //   setCode(event.target.value)
+  // }
 
   function editVillage(event) {
     event.preventDefault()
-    const data ={
-      name, location, code
-    }
-    console.log(data);
-    handleClose()
-    // history.push('/village/edit')
+    // const data ={
+    //   name, location, code
+    // }
+    // console.log(data);
+    // handleClose()
+    history.push('/village/edit')
   }
 
   return (
@@ -41,10 +41,10 @@ export default function VillageCard(props) {
           <h6>Name: {props.village.name}</h6><br/>
           <h6>Location: {props.village.location}</h6><br/>
           <h6>Invitation Code: {props.village.invitation_code}</h6><br/>
-          <button type="button" className="btn btn-outline-warning" onClick={handleShow}>Edit</button>
+          <button type="button" className="btn btn-outline-warning" onClick={editVillage}>Edit</button>
       </div>
     </div>
-    <Modal show={show} 
+    {/* <Modal show={show} 
       onHide={handleClose} 
       backdrop="static"
       >
@@ -63,7 +63,7 @@ export default function VillageCard(props) {
       <Modal.Footer>
       <small id="emailHelp" className="form-text text-muted">Your detail is only visible to you</small>
       </Modal.Footer>
-    </Modal>
+    </Modal> */}
   </div>
   )
 }
