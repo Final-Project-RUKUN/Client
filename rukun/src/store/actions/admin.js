@@ -37,9 +37,9 @@ export function adminLogin(payload) {
       method: "POST",
       data: payload
     })
-    .then(data => {
+    .then(({data})=> {
       console.log(data, '>>>data<<<');
-      localStorage.setItem('access_token', data.data)
+      localStorage.setItem('access_token', data.access_token)
       dispatch(setLogin(true))
     })
     .catch(err => {
@@ -79,9 +79,10 @@ export function getData() {
 }
 
 export function changeAdmin(data) {
+
   console.log(data, 'action');
   const id = data
-  return () => {
+  return (dispatch) => {
     axios({
       url: `http://localhost:4000/admin/change/${id}`,
       method: "PUT",
@@ -94,6 +95,9 @@ export function changeAdmin(data) {
     })
     .catch(err => {
       console.log(err);
+    })
+    .finally(_ => {
+      dispatch(adminLogout())
     })
 
   }

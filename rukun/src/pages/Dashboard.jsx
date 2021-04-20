@@ -57,16 +57,6 @@ export default function Home() {
     return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
   }
 
-  function totalIncomeInt() {
-    let income = 0
-
-    transactions.forEach(transaction => {
-      if (transaction.type === "income") {
-        income = income + +transaction.amount
-      }
-    })
-    return income
-  }
 
   function totalExpenseInt() {
     let income = 0
@@ -79,21 +69,14 @@ export default function Home() {
     return income
   }
 
-  function currentBalance() {
-    const initialValue = data?.balance
-    const income = totalIncomeInt()
-    const expense = totalExpenseInt()
-
-    return initialValue + income - expense
-  }
 
   function toIDR (value) {
     return `Rp. ${value?.toLocaleString()}`
   }
 
-  if(loading) {
-    return <ClipLoader></ClipLoader>
-  }
+  // if(loading) {
+  //   return <ClipLoader></ClipLoader>
+  // }
 
   return (
     <div>
