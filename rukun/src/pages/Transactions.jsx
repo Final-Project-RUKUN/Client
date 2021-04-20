@@ -25,7 +25,7 @@ export default function Transaction() {
                 <div style={{marginRight: 5, width: 100}}>
                   <label style={{marginRight: 5, width: 55, marginTop: 5}}>Village:</label>
                 </div>
-                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
+                <input type="text" value={data?.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
                 <div style={{marginRight: 5, width: 120}}>
                   <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
                 </div>

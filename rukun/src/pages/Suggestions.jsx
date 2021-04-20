@@ -64,7 +64,7 @@ export default function Suggestions() {
                 <div style={{marginRight: 5, width: 100}}>
                   <label style={{marginRight: 5, width: 55, marginTop: 5}}>Village:</label>
                 </div>
-                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
+                <input type="text" value={data?.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
                 <div style={{marginRight: 5, width: 120}}>
                   <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
                 </div>
@@ -103,7 +103,7 @@ export default function Suggestions() {
               </div >
               
               </div>
-              <div className="overflow-auto mr-5" style={{height: 550}}>
+              <div className="overflow-auto mr-5" style={{height: 580}}>
                 {
                   loading ? <ClipLoader/> :
                   data.Suggestions?.map((suggestion, index) => {

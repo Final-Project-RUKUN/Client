@@ -44,7 +44,6 @@ export function adminLogin(payload) {
       data: payload
     })
     .then(data=> {
-      // console.log(data, '>>>data<<<');
       localStorage.setItem('access_token', data.data)
       dispatch(setLogin(true))
     })

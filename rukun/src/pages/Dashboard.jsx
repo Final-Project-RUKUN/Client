@@ -23,13 +23,15 @@ export default function Home() {
     dispatch(setTransactionsAsync())
     dispatch(getData())
     dispatch(getAdmin())
+    // console.log(transactions?.Transactions,'<<<<<<<<');
   },[dispatch])
 
   function totalIncome() {
+    console.log(transactions);
     // const income = transactions.filter(transaction => transaction.type === "income")
     let income = 0
 
-    transactions.forEach(transaction => {
+    transactions?.Transactions?.forEach(transaction => {
       if (transaction.type === "income") {
         income = income + +transaction.amount
       }
@@ -45,7 +47,7 @@ export default function Home() {
     // const income = transactions.filter(transaction => transaction.type === "income")
     let income = 0
 
-    transactions.forEach(transaction => {
+    transactions?.Transactions?.forEach(transaction => {
       if (transaction.type === "expance") {
         income = income + +transaction.amount
       }
@@ -57,26 +59,9 @@ export default function Home() {
     return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
   }
 
-
-  function totalExpenseInt() {
-    let income = 0
-
-    transactions.forEach(transaction => {
-      if (transaction.type === "expance") {
-        income = income + +transaction.amount
-      }
-    })
-    return income
-  }
-
-
   function toIDR (value) {
     return `Rp. ${value?.toLocaleString()}`
   }
-
-  // if(loading) {
-  //   return <ClipLoader></ClipLoader>
-  // }
 
   return (
     <div>
@@ -95,7 +80,7 @@ export default function Home() {
                 <div style={{marginRight: 5, width: 100}}>
                   <label style={{marginRight: 5, width: 55, marginTop: 5}}>Village:</label>
                 </div>
-                <input type="text" value={data.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
+                <input type="text" value={data?.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
                 <div style={{marginRight: 5, width: 120}}>
                   <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
                 </div>
@@ -194,7 +179,7 @@ export default function Home() {
                           {
                             loading ? <ClipLoader></ClipLoader> :
                             <h4>{
-                            data.Transactions?.length === 0 ? 0 : data.Transactions?.length 
+                              data.Transactions?.length === 0 ? 0 : data.Transactions?.length 
                             }</h4>
                           }
                         </div>
