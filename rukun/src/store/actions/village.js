@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+const baseUrl = 'https://rukun-server.herokuapp.com'
+
 export function setData(payload) {
   return { type: 'village/setData', payload }
 }
@@ -13,7 +15,7 @@ export function getVillagers() {
   return (dispatch) => {
     dispatch(setLoading(true))
     axios({
-      url: "http://localhost:4000/villagers",
+      url: baseUrl + "/villagers",
       method: "GET",
       headers: {
         access_token: localStorage.access_token
@@ -37,7 +39,7 @@ export function deleteVillagers(data) {
   const id = data
   return (dispatch) => {
     axios({
-      url: `http://localhost:4000/user/${id}`,
+      url: baseUrl + `/user/${id}`,
       method: "DELETE",
       headers: {
         access_token: localStorage.access_token

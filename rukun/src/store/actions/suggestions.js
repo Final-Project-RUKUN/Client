@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+const baseUrl = 'https://rukun-server.herokuapp.com'
+
 export function setSuggestions(payload) {
   return { type: 'suggestions/setSuggestions', payload }
 }
@@ -14,7 +16,7 @@ export function setLoading (payload) {
 }
   
 export function setSuggestionsAsync() {
-  const url = 'http://localhost:4000/suggestions'
+  const url = baseUrl + '/suggestions'
   return (dispatch) => {
     dispatch(setLoading(true))
     axios({
@@ -39,7 +41,7 @@ export function newSuggestion (data) {
   return(dispatch) => {
     dispatch(setLoading(true))
     axios({
-    url: 'http://localhost:4000/suggestions',
+    url: baseUrl + '/suggestions',
     method: 'POST',
     headers: {
       access_token: localStorage.access_token
@@ -60,7 +62,7 @@ export function getOneSuggestion(data) {
   const id = data.id
   return (dispatch) => {
     axios({
-      url: `http://localhost:4000/suggestions/${id}`,
+      url: baseUrl + `/suggestions/${id}`,
       method: 'GET',
       headers: {
         access_token: localStorage.access_token
@@ -77,7 +79,7 @@ export function getOneSuggestion(data) {
 export function deleteSuggestion(data) {
   return (dispatch) => {
     axios({
-      url: `http://localhost:4000/suggestions/${data}`,
+      url: baseUrl + `/suggestions/${data}`,
       method: 'DELETE',
       headers: {
         access_token: localStorage.access_token
