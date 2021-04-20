@@ -23,7 +23,9 @@ export default function VillagerList(props) {
       })
     } else {
       Swal.fire({
-        title: `Are you want to delete this account?, this action is irreverible`,
+        title: "Are you sure?",
+        text: "This action will permanently delete the account.",
+        // title: `Are you want to delete this account?, this action is irreverible`,
         showCancelButton: true,
         confirmButtonText: `Delete`,
         denyButtonText: `Cancel`,
@@ -46,7 +48,9 @@ export default function VillagerList(props) {
       })
     } else {
       Swal.fire({
-        title: `Are you want to demote this admin?, ensure there is at least one admin or this site will be unaccessable`,
+        title: "Are you sure?",
+        text: "Pease ensure there is at least one admin or this site will be unaccessible!",
+        // title: `Are you want to demote this admin?, ensure there is at least one admin or this site will be unaccessable`,
         showCancelButton: true,
         confirmButtonText: `Demote`,
         denyButtonText: `Cancel`,

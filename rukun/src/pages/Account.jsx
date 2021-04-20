@@ -22,9 +22,9 @@ export default function Account() {
             <br/>
             <div className="container-fluid" style={{textAlign: "start", marginTop: 50}}>
             {/* content */}
-            <h2>Account</h2>
+            <h2>Account</h2> <br/>
             
-            <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
+            {/* <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
               <div className="d-flex justify-content-end">
                 <div style={{marginRight: 5, width: 100}}>
                   <label style={{marginRight: 5, width: 55, marginTop: 5}}>Village:</label>
@@ -35,7 +35,8 @@ export default function Account() {
                 </div>
                 <input type="text" value={data?.invitation_code} disabled="disabled" style={{marginRight: 10, height: 30}}/>
               </div>
-            </div>
+            </div> */}
+            
             <h5>Account Detail</h5>
             <AccountCard admin={admin}/><br/>
 

@@ -11,7 +11,9 @@ export default function SuggestionCard(props) {
 
   function destroySuggestion(id) {
     Swal.fire({
-      title: "Do you want to delete this suggestion?, you won't be able to recover it",
+      title: "Are you sure?",
+      text: "This action will permanently delete the information.",
+      
       showCancelButton: true,
       confirmButtonText: `Delete`,
       denyButtonText: `Cancel`,
