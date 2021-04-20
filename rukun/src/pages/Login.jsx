@@ -10,6 +10,7 @@ toast.configure();
 
 export default function Login() {
   const isLogin = useSelector(state => state.admin.login)
+  const error = useSelector(state => state.admin.error)
   const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -17,7 +18,16 @@ export default function Login() {
 
   useEffect(() => {
     if(isLogin) {
+      toast.info(`welcome ${username}`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
+      })
       history.push('/dashboard')
+    } else if (isLogin === false) {
+      toast.error(`Invalid username or password`, {
+      autoClose: 3000,
+      position: toast.POSITION.TOP_RIGHT,
+    })
     }
   }, [isLogin])
 
@@ -28,18 +38,14 @@ export default function Login() {
     setPassword(event.target.value)
   }
 
-
   function login(event) {
     event.preventDefault()
     const data ={
       username, password
     }
     dispatch(adminLogin(data))
-    toast.info(`welcome ${username}`, {
-      autoClose: 3000,
-      position: toast.POSITION.TOP_RIGHT,
-    })
   }
+
   function register() {
     history.push('/register')
   }
