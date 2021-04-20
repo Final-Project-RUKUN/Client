@@ -1,5 +1,5 @@
 import axios from 'axios'
-const url = 'http://localhost:4000/transactions'
+const url = 'https://rukun-server.herokuapp.com/transactions'
 
 export function setTransactions(payload) {
   return { type: 'transactions/setTransactions', payload }

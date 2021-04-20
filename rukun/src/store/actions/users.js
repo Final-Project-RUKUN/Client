@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+let baseUrl = 'https://rukun-server.herokuapp.com'
+
 export function setUsers(payload) {
   return { type: 'users/setUsers', payload }
 }
@@ -9,7 +11,7 @@ export function setAdmin(payload) {
 }
 
 export function setUsersAsync() {
-  const url = 'http://localhost:4000/villagers'
+  const url = baseUrl + '/villagers'
 
   return (dispatch) => {
     axios({
@@ -27,7 +29,7 @@ export function setUsersAsync() {
 }
 
 export function getAdmin() {
-  const url = 'http://localhost:4000/user/'
+  const url = baseUrl + '/user/'
 
   return (dispatch) => {
     axios({
