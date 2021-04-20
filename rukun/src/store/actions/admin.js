@@ -12,6 +12,10 @@ export function setLogin(payload) {
   return {type : 'login/setLogin', payload}
 }
 
+export function setError(payload) {
+  return {type : 'error/setError', payload}
+}
+
 export function adminRegister(payload) {
   console.log(payload);
   return (dispatch) => {
@@ -44,6 +48,7 @@ export function adminLogin(payload) {
     })
     .catch(err => {
       console.log(err);
+      dispatch(setError(err))
     })
   }
 }

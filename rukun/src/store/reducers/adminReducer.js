@@ -7,7 +7,8 @@ const initialState = {
     Transactions: []
   }],
   loading: false,
-  login: false
+  login: null,
+  error: []
 }
   
 function adminReducer(state = initialState, action) {
@@ -18,7 +19,8 @@ function adminReducer(state = initialState, action) {
     return {...state, loading: payload}
   } else if (type === 'login/setLogin') {
     return {...state, login: payload}
-
+  } else if (type === 'error/setError') {
+    return {...state, login: false}
   }
   return state
 }
