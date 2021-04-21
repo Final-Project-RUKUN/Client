@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let baseUrl = 'https://rukun-server.herokuapp.com'
+let baseUrl = 'http://3.85.16.248:4000'
 
 export function setUsers(payload) {
   return { type: 'users/setUsers', payload }

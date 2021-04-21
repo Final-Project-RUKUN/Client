@@ -18,7 +18,6 @@ export default function AnnouncementForm() {
 
   const villagers = useSelector(state => state.village.village)
   const dispatch = useDispatch()
-  console.log(villagers, "<<<villagerss")
 
   useEffect(() => {
     dispatch(getVillagers())

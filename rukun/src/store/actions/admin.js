@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'https://rukun-server.herokuapp.com'
+const baseUrl = 'http://3.85.16.248:4000'
 
 export function setData(payload) {
   return { type: 'admin/setData', payload }
@@ -19,7 +19,6 @@ export function setError(payload) {
 }
 
 export function adminRegister(payload) {
-  console.log(payload);
   return (dispatch) => {
     axios({
       url: baseUrl + "/admin/register",
@@ -44,7 +43,6 @@ export function adminLogin(payload) {
       data: payload
     })
     .then(data=> {
-      console.log(data, '>>>data<<<');
       localStorage.setItem('access_token', data.data)
       dispatch(setLogin(true))
     })
@@ -86,8 +84,6 @@ export function getData() {
 }
 
 export function changeAdmin(data) {
-
-  console.log(data, 'action');
   const id = data
   return (dispatch) => {
     axios({

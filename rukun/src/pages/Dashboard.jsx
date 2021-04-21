@@ -23,12 +23,9 @@ export default function Home() {
     dispatch(setTransactionsAsync())
     dispatch(getData())
     dispatch(getAdmin())
-    // console.log(transactions?.Transactions,'<<<<<<<<');
   },[dispatch])
 
   function totalIncome() {
-    // console.log(transactions);
-    // const income = transactions.filter(transaction => transaction.type === "income")
     let income = 0
 
     transactions?.Transactions?.forEach(transaction => {
@@ -44,7 +41,6 @@ export default function Home() {
   }
 
   function totalExpance() {
-    // const income = transactions.filter(transaction => transaction.type === "income")
     let income = 0
 
     transactions?.Transactions?.forEach(transaction => {
