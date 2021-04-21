@@ -16,46 +16,48 @@ export default function Reports() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // console.log(totalIncome(), 'function');
     dispatch(setTransactionsAsync())
     dispatch(getData())
   }, [dispatch])
 
   function totalIncome() {
-    // const income = transactions.filter(transaction => transaction.type === "income")
     let income = 0
+    if(loading){
+      return <ClipLoader></ClipLoader>
+    } else {
+      transactions?.Transactions?.forEach(transaction => {
+        if (transaction.type === "income") {
+          income = income + +transaction.amount
+        }
+      })
+  
+      var rupiah = '';		
+      var angkarev = income.toString().split('').reverse().join('');
+      for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+      return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
+    }
 
-    transactions.forEach(transaction => {
-      if (transaction.type === "income") {
-        income = income + +transaction.amount
-      }
-    })
-
-    var rupiah = '';		
-    var angkarev = income.toString().split('').reverse().join('');
-    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
-    return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
   }
 
   function totalExpance() {
-    // const income = transactions.filter(transaction => transaction.type === "income")
     let income = 0
 
-    transactions.forEach(transaction => {
-      if (transaction.type === "expance") {
-        income = income + +transaction.amount
-      }
-    })
+    if(loading){
+      return <ClipLoader></ClipLoader>
+    } else {
+      transactions?.Transactions?.forEach(transaction => {
+        if (transaction.type === "expance") {
+          income = income + +transaction.amount
+        }
+      })
+  
+      var rupiah = '';		
+      var angkarev = income.toString().split('').reverse().join('');
+      for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+      return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
+    }
 
-    var rupiah = '';		
-    var angkarev = income.toString().split('').reverse().join('');
-    for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
-    return 'Rp. '+rupiah.split('',rupiah.length-1).reverse().join('');
   }
-
-  // if(loading) {
-  //   return <ClipLoader></ClipLoader>
-  // }
 
   return (
     <div>
@@ -75,7 +77,7 @@ export default function Reports() {
                   <div style={{marginRight: 5, width: 100}}>
                     <label style={{marginRight: 5, width: 55, marginTop: 5}}>Village:</label>
                   </div>
-                  <input type="text" value={data.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
+                  <input type="text" value={data?.name} disabled="disabled" style={{marginRight: 25, height: 30}}/>
                   <div style={{marginRight: 5, width: 120}}>
                     <label style={{marginRight: 5, width: 115, marginTop: 5}}> Invitation Code:</label>
                   </div>
@@ -98,7 +100,7 @@ export default function Reports() {
                           {
                             loading ? <ClipLoader></ClipLoader> :
                             <h4>{
-                            data.Transactions?.length === 0 ? 0 : data.Transactions?.length 
+                              data?.Transactions?.length === 0 ? 0 : data.Transactions?.length 
                             }</h4>
                           }
                             <span>TRANSACTIONS</span>
@@ -165,10 +167,10 @@ export default function Reports() {
                     <th scope="col" style={{textAlign:"end"}}>Amount</th>
                   </tr>
                 </thead>
-                <tbody className="mr-5" style={{height: 380}}>
+                <tbody className="mr-5" style={{height: 430}}>
                   {
                     loading ? <ClipLoader></ClipLoader> :
-                    transactions?.map((transaction, index) => {
+                    transactions?.Transactions?.map((transaction, index) => {
                       return <ReportCard transaction={transaction} key={transaction.id} index={index}></ReportCard>
                     })
                   }

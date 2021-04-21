@@ -17,10 +17,6 @@ export default function Villagers() {
     dispatch(getVillagers())
   }, [dispatch])
 
-  // if(loading) {
-  //   return <ClipLoader></ClipLoader>
-  // }
-
   return (
     <div>
       <div className="container-fluid">
@@ -63,7 +59,7 @@ export default function Villagers() {
                   <th>Action</th>
                 </tr>
                 </thead>
-                <tbody style={{height: 380}}>
+                <tbody style={{height: 480}}>
                 {
                   loading ? <ClipLoader></ClipLoader> :
                   village.Users?.map((user, index) => {

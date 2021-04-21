@@ -1,7 +1,7 @@
 import React,{ useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { deleteVillagers } from '../store/actions/village'
-import { changeAdmin } from '../store/actions/admin'
+import { changeAdmin,adminLogout } from '../store/actions/admin'
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom"
 import "react-toastify/dist/ReactToastify.css";
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 toast.configure();
 
 export default function VillagerList(props) {
-  const { id, name, role, VillageId } = props.user
+  const { id, name, role } = props.user
   const villageName = props.village
   const index = props.index
   const dispatch = useDispatch()
@@ -25,16 +25,13 @@ export default function VillagerList(props) {
       Swal.fire({
         title: "Are you sure?",
         text: "This action will permanently delete the account.",
-        // title: `Are you want to delete this account?, this action is irreverible`,
         showCancelButton: true,
         confirmButtonText: `Delete`,
         denyButtonText: `Cancel`,
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           dispatch(deleteVillagers(id))
           Swal.fire(`${name} deleted`, '', 'success')
-          history.push('/')
         }
       })
     }
@@ -42,24 +39,24 @@ export default function VillagerList(props) {
 
   function demoteAdmin(id) {
     if(role !== 'admin') {
-      toast.error(`You can only demote an admin`, {
-        autoClose: 3000,
-        position: toast.POSITION.TOP_RIGHT,
-      })
-    } else {
       Swal.fire({
         title: "Are you sure?",
-        text: "Pease ensure there is at least one admin or this site will be unaccessible!",
-        // title: `Are you want to demote this admin?, ensure there is at least one admin or this site will be unaccessable`,
+        text: "You will transfer your admin privilage to this account",
         showCancelButton: true,
-        confirmButtonText: `Demote`,
+        confirmButtonText: `Promote`,
         denyButtonText: `Cancel`,
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           dispatch(changeAdmin(id))
-          Swal.fire('Admin demoted', '', 'success')
+          dispatch(adminLogout())
+          Swal.fire('Admin privilage tranferred', '', 'success')
+          history.push('/')
         }
+      })
+    } else {
+      toast.error(`You can only promote member`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
       })
     }
   }

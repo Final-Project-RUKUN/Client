@@ -14,12 +14,7 @@ export default function EditAccount() {
             <div className="container-fluid" style={{textAlign: "start", marginTop: 50}}>
             {/* content */}
             <h3>Edit Account</h3> <br/><br/>
-            
-            {/* <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
-              <div>
-                <h5>Desa Catur, 16 April 2021</h5>
-              </div>
-            </div> */}
+          
             <h5>Account Detail</h5> <br/>
             <div>
               <div className="card card-body mb-2 mr-5">
