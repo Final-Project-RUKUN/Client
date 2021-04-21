@@ -51,7 +51,6 @@ export default function EditVillage() {
             {/* content */}
             <h3>Edit Village</h3><br/><br/>
             
-            
             <h5>Village Detail</h5><br/>
             <div>
               <div className="card card-body mb-2 mr-5">

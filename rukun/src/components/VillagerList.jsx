@@ -1,5 +1,5 @@
 import React,{ useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { deleteVillagers } from '../store/actions/village'
 import { changeAdmin,adminLogout } from '../store/actions/admin'
 import { toast } from "react-toastify";
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 toast.configure();
 
 export default function VillagerList(props) {
-  const { id, name, role, VillageId } = props.user
+  const { id, name, role } = props.user
   const villageName = props.village
   const index = props.index
   const dispatch = useDispatch()
@@ -25,12 +25,10 @@ export default function VillagerList(props) {
       Swal.fire({
         title: "Are you sure?",
         text: "This action will permanently delete the account.",
-        // title: `Are you want to delete this account?, this action is irreverible`,
         showCancelButton: true,
         confirmButtonText: `Delete`,
         denyButtonText: `Cancel`,
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           dispatch(deleteVillagers(id))
           Swal.fire(`${name} deleted`, '', 'success')
@@ -40,17 +38,14 @@ export default function VillagerList(props) {
   }
 
   function demoteAdmin(id) {
-    console.log(id, role);
     if(role !== 'admin') {
       Swal.fire({
         title: "Are you sure?",
         text: "You will transfer your admin privilage to this account",
-        // title: `Are you want to demote this admin?, ensure there is at least one admin or this site will be unaccessable`,
         showCancelButton: true,
         confirmButtonText: `Promote`,
         denyButtonText: `Cancel`,
       }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           dispatch(changeAdmin(id))
           dispatch(adminLogout())

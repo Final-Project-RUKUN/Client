@@ -16,14 +16,11 @@ export default function Reports() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // console.log(totalIncome(), 'function');
     dispatch(setTransactionsAsync())
     dispatch(getData())
-    // console.log(transactions?.Transactions,'<<<<<<<<');
   }, [dispatch])
 
   function totalIncome() {
-    // const income = transactions.filter(transaction => transaction.type === "income")
     let income = 0
     if(loading){
       return <ClipLoader></ClipLoader>
@@ -43,7 +40,6 @@ export default function Reports() {
   }
 
   function totalExpance() {
-    // const income = transactions.filter(transaction => transaction.type === "income")
     let income = 0
 
     if(loading){
@@ -62,10 +58,6 @@ export default function Reports() {
     }
 
   }
-
-  // if(loading) {
-  //   return <ClipLoader></ClipLoader>
-  // }
 
   return (
     <div>

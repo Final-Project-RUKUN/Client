@@ -1,24 +1,21 @@
 import React,{ useState, useEffect } from 'react'
 import { getOneSuggestion, deleteSuggestion, updateSuggestion } from '../store/actions/suggestions'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Moment from 'react-moment';
 import Swal from 'sweetalert2'
-// import 'moment-timezone';
 
 export default function SuggestionCard(props) {
-  const { title, description, UserId, id, createdAt } = props.suggestion
+  const { title, description, id, createdAt } = props.suggestion
   const dispatch = useDispatch()
 
   function destroySuggestion(id) {
     Swal.fire({
       title: "Are you sure?",
       text: "This action will permanently delete the information.",
-      
       showCancelButton: true,
       confirmButtonText: `Delete`,
       denyButtonText: `Cancel`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         dispatch(deleteSuggestion(id))
         Swal.fire('Deleted!', '', 'success')

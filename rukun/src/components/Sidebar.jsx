@@ -7,7 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
 export default function Sidebar() {
-  const login = useSelector(state => state.admin.login)
   const history = useHistory()
   const dispatch = useDispatch()
 
