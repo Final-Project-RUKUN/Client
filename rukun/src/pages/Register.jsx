@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import "../styles/Register.css"
 import { adminRegister } from '../store/actions/admin'
@@ -48,6 +48,12 @@ export default function Register() {
     })
     history.push('/')
   }
+
+  useEffect(() => {
+    if(localStorage.access_token) {
+      history.push('/dashboard')
+    }
+  }, [])
 
   function login() {
     history.push('/')

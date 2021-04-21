@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://3.85.16.248:80'
+const baseUrl = 'https://rukun-server.herokuapp.com'
 
 export function setData(payload) {
   return { type: 'village/setData', payload }

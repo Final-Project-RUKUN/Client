@@ -13,10 +13,10 @@ export default function Sidebar() {
 
   useEffect(() => {
     console.log(isLogin,'status');
-    if(isLogin === null) {
+    if(!localStorage.access_token) {
       history.push('/')
     }
-  }, [isLogin])
+  }, [])
 
   function toDashboard() {
     history.push("/dashboard")
