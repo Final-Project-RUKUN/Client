@@ -30,6 +30,12 @@ export default function Login() {
     }
   }, [isLogin])
 
+  useEffect(() => {
+    if(localStorage.access_token) {
+      history.push('/dashboard')
+    }
+  }, [])
+
   function addUsername(event) {
     setUsername(event.target.value)
   }
