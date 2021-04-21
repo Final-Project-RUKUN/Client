@@ -24,7 +24,15 @@ export default function AnnouncementForm() {
     dispatch(getVillagers())
   }, [dispatch])
 
-  const sendPushNotification = async(message) => {
+  const sendPushNotification = async(expoPushToken) => {
+    const message = {
+      to: expoPushToken,
+      sound: 'default',
+      title: data.title,
+      body: data.description,
+      data: { someData: 'goes here' }
+    }
+
     await fetch('https://exp.host/--/api/v2/push/send', {
       mode: 'no-cors',  
       method: 'POST',
@@ -36,6 +44,19 @@ export default function AnnouncementForm() {
       body: JSON.stringify(message),
     });
   }
+
+  // const sendPushNotification = async(message) => {
+  //   await fetch('https://exp.host/--/api/v2/push/send', {
+  //     mode: 'no-cors',  
+  //     method: 'POST',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Accept-encoding': 'gzip, deflate',
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(message),
+  //   });
+  // }
 
   function handleInput(e) {
     e.preventDefault()
@@ -52,26 +73,42 @@ export default function AnnouncementForm() {
     if (errors.length) {
       setError(true)
     } else {
-      let arrExpoToken = []
       toast.info(`${data.title} announced`, {
         autoClose: 3000,
         position: toast.POSITION.TOP_RIGHT,
       })
       villagers.Users.map(villager => {
-        arrExpoToken.push({
-          to: villager.push_token,
-          sound: 'default',
-          title: data.title,
-          body: data.description,
-          data: { someData: 'goes here' }
-        })
+        sendPushNotification(villager.push_token)
       })
-      sendPushNotification(arrExpoToken)
       setData({
         title: '',
         description: ''
       })
     }
+
+    // if (errors.length) {
+    //   setError(true)
+    // } else {
+    //   let arrExpoToken = []
+    //   toast.info(`${data.title} announced`, {
+    //     autoClose: 3000,
+    //     position: toast.POSITION.TOP_RIGHT,
+    //   })
+    //   villagers.Users.map(villager => {
+    //     arrExpoToken.push({
+    //       to: villager.push_token,
+    //       sound: 'default',
+    //       title: data.title,
+    //       body: data.description,
+    //       data: { someData: 'goes here' }
+    //     })
+    //   })
+    //   sendPushNotification(arrExpoToken)
+    //   setData({
+    //     title: '',
+    //     description: ''
+    //   })
+    // }
 
   }
 
