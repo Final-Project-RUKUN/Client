@@ -10,6 +10,30 @@ export function setLoading (payload) {
   return {type : 'loading/setLoading', payload}
 }
 
+export function setVillageAsync(payload) {
+  const url = baseUrl + '/village'
+
+  return (dispatch) => {
+    dispatch(setLoading(true))
+    axios({
+      method: 'PATCH',
+      url,
+      headers: {
+        access_token: localStorage.access_token
+      },
+      data: payload
+    })
+    .then(({data}) => {
+      console.log(data);
+      dispatch(getVillagers())
+    })
+    .catch(err => console.log(err))
+    .finally(_ => {
+      dispatch(setLoading(false))
+    })
+  }
+}
+
 
 export function getVillagers() {
   return (dispatch) => {

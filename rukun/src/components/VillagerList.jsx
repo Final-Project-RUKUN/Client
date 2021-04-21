@@ -1,7 +1,7 @@
 import React,{ useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteVillagers } from '../store/actions/village'
-import { changeAdmin } from '../store/actions/admin'
+import { changeAdmin,adminLogout } from '../store/actions/admin'
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom"
 import "react-toastify/dist/ReactToastify.css";
@@ -34,32 +34,34 @@ export default function VillagerList(props) {
         if (result.isConfirmed) {
           dispatch(deleteVillagers(id))
           Swal.fire(`${name} deleted`, '', 'success')
-          history.push('/')
         }
       })
     }
   }
 
   function demoteAdmin(id) {
+    console.log(id, role);
     if(role !== 'admin') {
-      toast.error(`You can only demote an admin`, {
-        autoClose: 3000,
-        position: toast.POSITION.TOP_RIGHT,
-      })
-    } else {
       Swal.fire({
         title: "Are you sure?",
-        text: "Pease ensure there is at least one admin or this site will be unaccessible!",
+        text: "You will transfer your admin privilage to this account",
         // title: `Are you want to demote this admin?, ensure there is at least one admin or this site will be unaccessable`,
         showCancelButton: true,
-        confirmButtonText: `Demote`,
+        confirmButtonText: `Promote`,
         denyButtonText: `Cancel`,
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           dispatch(changeAdmin(id))
-          Swal.fire('Admin demoted', '', 'success')
+          dispatch(adminLogout())
+          Swal.fire('Admin privilage tranferred', '', 'success')
+          history.push('/')
         }
+      })
+    } else {
+      toast.error(`You can only promote member`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
       })
     }
   }

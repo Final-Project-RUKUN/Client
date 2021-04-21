@@ -17,6 +17,7 @@ export default function Login() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log(isLogin,'status');
     if(isLogin) {
       toast.info(`welcome ${username}`, {
         autoClose: 3000,

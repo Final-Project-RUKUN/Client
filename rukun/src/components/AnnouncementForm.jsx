@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addTransactionsAsync } from '../store/actions/transactions'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { setSuggestionsAsync, newSuggestion } from '../store/actions/suggestions'
 import { toast } from "react-toastify";
+import { getVillagers } from '../store/actions/village'
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
@@ -16,7 +15,35 @@ export default function AnnouncementForm() {
     description: ''
   })
   const [isError, setError] = useState(false)
+
+  const villagers = useSelector(state => state.village.village)
   const dispatch = useDispatch()
+  console.log(villagers, "<<<villagerss")
+
+  useEffect(() => {
+    dispatch(getVillagers())
+  }, [dispatch])
+
+  const sendPushNotification = async(expoPushToken) => {
+    const message = {
+      to: expoPushToken,
+      sound: 'default',
+      title: data.title,
+      body: data.description,
+      data: { someData: 'goes here' },
+    };
+  
+    await fetch('https://exp.host/--/api/v2/push/send', {
+      mode: 'no-cors',  
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Accept-encoding': 'gzip, deflate',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message),
+    });
+  }
 
   function handleInput(e) {
     e.preventDefault()
@@ -34,11 +61,14 @@ export default function AnnouncementForm() {
       setError(true)
     } else {
       // console.log(data);
-      toast.info(`${data.title} added`, {
+      toast.info(`${data.title} announced`, {
         autoClose: 3000,
         position: toast.POSITION.TOP_RIGHT,
       })
-      dispatch(addTransactionsAsync(data))
+      villagers.Users.map(villager => {
+        console.log(villager, "<<<<push token")
+        sendPushNotification(villager.push_token)
+      })
       setData({
         title: '',
         description: ''

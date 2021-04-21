@@ -27,7 +27,7 @@ export default function Home() {
   },[dispatch])
 
   function totalIncome() {
-    console.log(transactions);
+    // console.log(transactions);
     // const income = transactions.filter(transaction => transaction.type === "income")
     let income = 0
 
