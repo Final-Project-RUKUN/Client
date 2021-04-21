@@ -24,15 +24,7 @@ export default function AnnouncementForm() {
     dispatch(getVillagers())
   }, [dispatch])
 
-  const sendPushNotification = async(expoPushToken) => {
-    const message = {
-      to: expoPushToken,
-      sound: 'default',
-      title: data.title,
-      body: data.description,
-      data: { someData: 'goes here' },
-    };
-  
+  const sendPushNotification = async(message) => {
     await fetch('https://exp.host/--/api/v2/push/send', {
       mode: 'no-cors',  
       method: 'POST',
@@ -60,14 +52,21 @@ export default function AnnouncementForm() {
     if (errors.length) {
       setError(true)
     } else {
+      let arrExpoToken = []
       toast.info(`${data.title} announced`, {
         autoClose: 3000,
         position: toast.POSITION.TOP_RIGHT,
       })
       villagers.Users.map(villager => {
-        console.log(villager, "<<<<push token")
-        sendPushNotification(villager.push_token)
+        arrExpoToken.push({
+          to: villager.push_token,
+          sound: 'default',
+          title: data.title,
+          body: data.description,
+          data: { someData: 'goes here' }
+        })
       })
+      sendPushNotification(arrExpoToken)
       setData({
         title: '',
         description: ''

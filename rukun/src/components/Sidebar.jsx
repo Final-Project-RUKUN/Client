@@ -61,7 +61,7 @@ export default function Sidebar() {
           </div>
           <div className="d-flex align-items-center" onClick={toSuggestions}>
               <i className="fa fa-boxes" style={{fontSize:"3rem", color:"#1abc9c"}}></i>
-              <h6 className="m-0 font" style={{color: "white"}}>Informations</h6>
+              <h6 className="m-0 font" style={{color: "white"}}>Information</h6>
           </div>
           <div className="d-flex align-items-center" onClick={toVillagers}>
               <i className="fa fa-boxes" style={{fontSize:"3rem", color:"#1abc9c"}}></i>

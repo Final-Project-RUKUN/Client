@@ -58,7 +58,7 @@ export default function Suggestions() {
             <div className="card card-tumpul flex-grow-1 body-section no-border">
               <br/>
               <div className="container-fluid" style={{textAlign: "start", marginTop: 50}}>
-                <h3>Informations</h3>
+                <h3>Information</h3>
               <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
               <div className="d-flex justify-content-end">
                 <div style={{marginRight: 5, width: 100}}>
