@@ -1,12 +1,20 @@
 import React,{ useState } from 'react'
 import Sidebar from '../components/Sidebar'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import AccountCard from '../components/AccountCard'
 import VillageCard from '../components/VillageCard'
+import { getAdmin } from '../store/actions/users'
+import { getData } from '../store/actions/admin'
 
 export default function Account() {
   const data = useSelector(state => state.admin.data)
   const admin = useSelector(state => state.users.admin)
+  const dispatch = useDispatch()
+
+  useState(() => {
+    dispatch(getAdmin())
+    dispatch(getData())
+  },[])
 
   return (
     <div>
@@ -21,7 +29,7 @@ export default function Account() {
             {/* content */}
             <h2>Account</h2> <br/>
             <h5>Account Detail</h5>
-            <AccountCard admin={admin}/><br/>
+              <AccountCard admin={admin}/>
 
             <h5>Village Detail</h5><br/>
               <VillageCard village={data}/>

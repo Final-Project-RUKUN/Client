@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function AccountCard(props) {
-  
   return (
     <div className="card card-body mb-2 mt-3">
     <div className="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
