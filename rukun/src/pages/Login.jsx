@@ -1,6 +1,5 @@
 import React,{ useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-
 import "../styles/Login.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { adminLogin } from '../store/actions/admin'
@@ -10,13 +9,13 @@ toast.configure();
 
 export default function Login() {
   const isLogin = useSelector(state => state.admin.login)
-  const error = useSelector(state => state.admin.error)
   const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log(isLogin,'status');
     if(isLogin) {
       toast.info(`welcome ${username}`, {
         autoClose: 3000,

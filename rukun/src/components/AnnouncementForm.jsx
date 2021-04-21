@@ -60,7 +60,6 @@ export default function AnnouncementForm() {
     if (errors.length) {
       setError(true)
     } else {
-      // console.log(data);
       toast.info(`${data.title} announced`, {
         autoClose: 3000,
         position: toast.POSITION.TOP_RIGHT,
