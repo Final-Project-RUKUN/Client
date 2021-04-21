@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://3.85.16.248:4000'
+const baseUrl = 'http://3.85.16.248:80'
 
 export function setData(payload) {
   return { type: 'admin/setData', payload }
@@ -27,6 +27,7 @@ export function adminRegister(payload) {
     })
     .then(({data}) => {
       console.log(data);
+      dispatch(setLogin(null))
     })
     .catch(err => {
       console.log(err);

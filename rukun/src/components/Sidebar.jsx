@@ -7,8 +7,16 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
 export default function Sidebar() {
+  const isLogin = useSelector(state => state.admin.login)
   const history = useHistory()
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    console.log(isLogin,'status');
+    if(isLogin === null) {
+      history.push('/')
+    }
+  }, [isLogin])
 
   function toDashboard() {
     history.push("/dashboard")

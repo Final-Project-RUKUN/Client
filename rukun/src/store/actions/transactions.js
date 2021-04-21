@@ -1,5 +1,5 @@
 import axios from 'axios'
-const url = 'http://3.85.16.248:4000/transactions'
+const url = 'http://3.85.16.248:80/transactions'
 
 export function setTransactions(payload) {
   return { type: 'transactions/setTransactions', payload }
