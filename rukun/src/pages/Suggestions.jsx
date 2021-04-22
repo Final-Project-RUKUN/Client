@@ -88,8 +88,13 @@ export default function Suggestions() {
                     <div className="form-group">
                       <label>Information</label>
                       <textarea placeholder="Max 200 characters" maxLength= "200" onChange={addDescription} required />
-                      <small id="emailHelp" className="form-text text-muted">Voice your information here!</small>
+                      <label>Type</label><br/>
+                      <select className="form-select" aria-label="Default select example" name="type" style={{ margin: 2, width: "100%", height:42.8 }}>
+                        <option value="information">Information</option>
+                        <option value="alert">Alert</option>
+                      </select>
                     </div>
+                      <small id="emailHelp" className="form-text text-muted">Voice your information here!</small>
                     <div className="d-flex justify-content-end">
                       <button type="submit" className="btn btn-outline-primary" style={{marginRight:0}}>Submit</button>
                     </div>

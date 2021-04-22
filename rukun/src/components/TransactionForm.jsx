@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
-
 export default function TransactionForm() {
   const error = useSelector(state => state.transactions.error)
 
@@ -40,10 +39,6 @@ export default function TransactionForm() {
       setError(true)
     } else {
       console.log(data);
-      toast.info(`${data.title} added`, {
-        autoClose: 3000,
-        position: toast.POSITION.TOP_RIGHT,
-      })
       dispatch(addTransactionsAsync(data))
       setData({
         title: '',
@@ -53,6 +48,17 @@ export default function TransactionForm() {
         type: data.type,
         status: 'panding'
       })
+      if(error === true) {
+        toast.error(`${data.title} added`, {
+          autoClose: 3000,
+          position: toast.POSITION.TOP_RIGHT,
+        })
+      } else {
+        toast.info(`${data.title} added`, {
+          autoClose: 3000,
+          position: toast.POSITION.TOP_RIGHT,
+        })
+      }
     }
 
   }
