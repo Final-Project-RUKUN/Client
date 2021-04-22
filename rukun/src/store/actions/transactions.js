@@ -8,6 +8,10 @@ export function setTransactions(payload) {
 export function setLoading (payload) {
   return {type : 'loading/setLoading', payload}
 }
+
+export function setError (payload) {
+  return {type : 'error/setError', payload}
+}
   
 export function setTransactionsAsync() {
   
@@ -28,8 +32,6 @@ export function setTransactionsAsync() {
 }
 
 export function addTransactionsAsync(payload) {
-  console.log(payload, 'payload');
-  
   return (dispatch) => {
     dispatch(setLoading(true))
     axios({
@@ -41,9 +43,14 @@ export function addTransactionsAsync(payload) {
       data: payload
     })
       .then(({data}) => {
+        // console.log(data);
         dispatch(setTransactions(data.Transactions))
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        // console.log(err);
+        console.log('masuk error');
+        dispatch(setError(true))
+      })
       .finally(_ => {
         dispatch(setLoading(false))
       })

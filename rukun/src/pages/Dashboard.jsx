@@ -44,7 +44,7 @@ export default function Home() {
     let income = 0
 
     transactions?.Transactions?.forEach(transaction => {
-      if (transaction.type === "expance") {
+      if (transaction.type === "expanse") {
         income = income + +transaction.amount
       }
     })

@@ -27,7 +27,7 @@ export function setSuggestionsAsync() {
       }
     })
     .then(({data}) => {
-      console.log(data);
+      // console.log(data);
       dispatch(setSuggestions(data))
     })
     .catch(err => console.log(err))

@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
+import { useDispatch,useSelector } from 'react-redux'
 import Sidebar from '../components/Sidebar'
 import TransactionForm from '../components/TransactionForm'
-import { useSelector } from 'react-redux'
-
+import { getData } from '../store/actions/admin'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 export default function Transaction() {
   const data = useSelector(state => state.admin.data)
+  const error = useSelector(state => state.transactions.error)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getData())
+  },[])
+
+  useEffect(() => {
+    console.log(error,'err');
+  },[dispatch])
 
   return (
     <div>

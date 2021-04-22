@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { addTransactionsAsync } from '../store/actions/transactions'
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,8 @@ toast.configure();
 
 
 export default function TransactionForm() {
+  const error = useSelector(state => state.transactions.error)
+
   const [data, setData] = useState({
     title: '',
     amount: '',
@@ -17,6 +19,10 @@ export default function TransactionForm() {
   })
   const [isError, setError] = useState(false)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    console.log(error);
+  },[dispatch])
 
   function handleInput(e) {
     e.preventDefault()
@@ -33,7 +39,7 @@ export default function TransactionForm() {
     if (errors.length) {
       setError(true)
     } else {
-      // console.log(data);
+      console.log(data);
       toast.info(`${data.title} added`, {
         autoClose: 3000,
         position: toast.POSITION.TOP_RIGHT,
@@ -73,7 +79,7 @@ export default function TransactionForm() {
               <input type="text" name="note" placeholder="Note (eg. Marni by cash)" value={data.note} onChange={handleInput} style={{ margin: 10, width: 350 }} />
               <select className="form-select" aria-label="Default select example" name="type" onChange={handleInput} style={{ margin: 10, width: 350, height:42.8 }}>
                 <option value="income">Income</option>
-                <option value="expance">Expense</option>
+                <option value="expanse">Expense</option>
               </select>
               <button className="btn btn-sm btn-outline-primary" type="submit" style={{ margin: 10, width: 100 }}>Submit</button>
             </form>

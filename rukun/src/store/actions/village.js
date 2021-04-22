@@ -24,7 +24,7 @@ export function setVillageAsync(payload) {
       data: payload
     })
     .then(({data}) => {
-      console.log(data);
+      // console.log(data);
       dispatch(getVillagers())
     })
     .catch(err => console.log(err))

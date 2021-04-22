@@ -46,7 +46,7 @@ export default function Reports() {
       return <ClipLoader></ClipLoader>
     } else {
       transactions?.Transactions?.forEach(transaction => {
-        if (transaction.type === "expance") {
+        if (transaction.type === "expanse") {
           income = income + +transaction.amount
         }
       })

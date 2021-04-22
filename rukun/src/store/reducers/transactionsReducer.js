@@ -1,6 +1,7 @@
 const initialState = {
   data: [],
-  loading: false
+  loading: false,
+  error: null
 }
   
 function transactionsReducer(state = initialState, action) {
@@ -9,6 +10,8 @@ function transactionsReducer(state = initialState, action) {
     return { ...state, data: payload }
   } else if (type === 'loading/setLoading') {
     return {...state, loading: payload}
+  } else if (type === 'error/setError') {
+    return {...state, error: payload}
   }
   return state
 }

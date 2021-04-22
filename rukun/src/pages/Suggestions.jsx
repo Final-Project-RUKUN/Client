@@ -83,11 +83,11 @@ export default function Suggestions() {
                   <form onSubmit={(event) => addSuggestion(event)}>
                     <div className="form-group">
                       <label>Title</label>
-                      <input type="text" className="form-control" placeholder="Title" onChange={addTitle}/>
+                      <input type="text" className="form-control" placeholder="Title" onChange={addTitle} required/>
                     </div>
                     <div className="form-group">
                       <label>Information</label>
-                      <textarea placeholder="Max 200 characters" maxLength= "200" onChange={addDescription} />
+                      <textarea placeholder="Max 200 characters" maxLength= "200" onChange={addDescription} required />
                       <small id="emailHelp" className="form-text text-muted">Voice your information here!</small>
                     </div>
                     <div className="d-flex justify-content-end">
