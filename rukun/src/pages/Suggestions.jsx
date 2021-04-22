@@ -13,8 +13,6 @@ toast.configure();
 export default function Suggestions() {
   const history = useHistory()
   const [show, setShow] = useState(false);
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -26,24 +24,44 @@ export default function Suggestions() {
     dispatch(setSuggestionsAsync())
   }, [dispatch])
 
-  function addTitle(event) {
-    setTitle(event.target.value)
-  }
-  function addDescription(event){
-    setDescription(event.target.value)
+  const [dataBaru, setData] = useState({
+    title: '',
+    description: '',
+    type: 'information',
+  })
+  const [isError, setError] = useState(false)
+  // const dispatch = useDispatch()
+
+  function handleInput(e) {
+    e.preventDefault()
+    const { name, value } = e.target
+    setData({ ...dataBaru, [name]: value })
+    console.log(dataBaru, "<<<handleInput")
   }
 
-  function addSuggestion(event) {
-    event.preventDefault()
-    const data = {
-      title, description
+  function handleSubmit(e) {
+    e.preventDefault()
+    const values = Object.values(dataBaru)
+
+    const errors = values.filter(value => value === '')
+    console.log(values)
+    if (errors.length) {
+      setError(true)
+    } else {
+      // console.log(data);
+      toast.info(`${dataBaru.title} added`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
+      })
+      console.log(dataBaru, "<<<<<")
+      dispatch(newSuggestion(dataBaru))
+      setData({
+        title: '',
+        description: '',
+        type: 'information',
+      })
+      handleClose()
     }
-    dispatch(newSuggestion(data))
-    toast.info(`${title} added to the list`, {
-      autoClose: 3000,
-      position: toast.POSITION.TOP_RIGHT,
-    })
-    handleClose()
   }
 
   return (
@@ -58,7 +76,7 @@ export default function Suggestions() {
             <div className="card card-tumpul flex-grow-1 body-section no-border">
               <br/>
               <div className="container-fluid" style={{textAlign: "start", marginTop: 50}}>
-                <h3>Informations</h3>
+                <h3>Information</h3>
               <div className="mb-5 mt-5 mr-5 d-flex justify-content-start align-items-center" >
               <div className="d-flex justify-content-end">
                 <div style={{marginRight: 5, width: 100}}>
@@ -80,16 +98,16 @@ export default function Suggestions() {
                     <Modal.Title>Add Information</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                  <form onSubmit={(event) => addSuggestion(event)}>
+                  <form onSubmit={handleSubmit}>
                     <div className="form-group">
                       <label>Title</label>
-                      <input type="text" className="form-control" placeholder="Title" onChange={addTitle} required/>
+                      <input type="text" name="title" className="form-control" placeholder="Title" onChange={handleInput}/>
                     </div>
                     <div className="form-group">
                       <label>Information</label>
-                      <textarea placeholder="Max 200 characters" maxLength= "200" onChange={addDescription} required />
-                      <label>Type</label><br/>
-                      <select className="form-select" aria-label="Default select example" name="type" style={{ margin: 2, width: "100%", height:42.8 }}>
+                      <textarea placeholder="Max 200 characters" name="description" maxLength= "200" onChange={handleInput} />
+                      <label style={{marginTop: 2}}>Type</label><br></br>
+                      <select className="form-select" name="type" onChange={handleInput} style={{ margin: 10, width: 350, height:42.8, marginLeft: 0, marginTop: 2, outline: 0 }}>
                         <option value="information">Information</option>
                         <option value="alert">Alert</option>
                       </select>
@@ -101,7 +119,7 @@ export default function Suggestions() {
                   </form>
                   </Modal.Body>
                   <Modal.Footer>
-                  <small id="emailHelp" className="form-text text-muted">Your information will be very helpful in improving our village!</small>
+                  <small id="emailHelp" className="form-text text-muted">Spread the word and let your village know!</small>
                   </Modal.Footer>
                 </Modal>
 

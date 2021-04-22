@@ -13,7 +13,7 @@ export default function TransactionForm() {
     amount: '',
     category: '',
     note: '',
-    type: 'income',
+    type: '',
     status: 'panding'
   })
   const [isError, setError] = useState(false)
@@ -45,7 +45,7 @@ export default function TransactionForm() {
         amount: '',
         category: '',
         note: '',
-        type: data.type,
+        type: '',
         status: 'panding'
       })
       if(error === true) {
