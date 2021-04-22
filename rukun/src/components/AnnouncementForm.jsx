@@ -12,7 +12,7 @@ export default function AnnouncementForm() {
 
   const [data, setData] = useState({
     title: '',
-    description: ''
+    description: '',
   })
   const [isError, setError] = useState(false)
 
@@ -81,7 +81,7 @@ export default function AnnouncementForm() {
       })
       setData({
         title: '',
-        description: ''
+        description: '',
       })
     }
 
