@@ -13,8 +13,9 @@ toast.configure();
 export default function Suggestions() {
   const history = useHistory()
   const [show, setShow] = useState(false);
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
+  // const [title, setTitle] = useState('')
+  // const [description, setDescription] = useState('')
+  // const [type, setType] = useState('')
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -26,24 +27,73 @@ export default function Suggestions() {
     dispatch(setSuggestionsAsync())
   }, [dispatch])
 
-  function addTitle(event) {
-    setTitle(event.target.value)
-  }
-  function addDescription(event){
-    setDescription(event.target.value)
+  // function addTitle(event) {
+  //   setTitle(event.target.value)
+  // }
+  // function addDescription(event){
+  //   setDescription(event.target.value)
+  // }
+  // function addType(event){
+  //   console.log('hello')
+  //   setType(event.target.value)
+  //   console.log(type)
+  // }
+
+  // function addSuggestion(event) {
+  //   event.preventDefault()
+  //   const dataBaru = {
+  //     title, description, type
+  //   }
+  //   console.log(dataBaru)
+  //   dispatch(newSuggestion(dataBaru))
+  //   toast.info(`${title} added to the list`, {
+  //     autoClose: 3000,
+  //     position: toast.POSITION.TOP_RIGHT,
+  //   })
+  //   setTitle('')
+  //   setDescription('')
+  //   setType('')
+  //   handleClose()
+  // }
+
+  const [dataBaru, setData] = useState({
+    title: '',
+    description: '',
+    type: 'information',
+  })
+  const [isError, setError] = useState(false)
+  // const dispatch = useDispatch()
+
+  function handleInput(e) {
+    e.preventDefault()
+    const { name, value } = e.target
+    setData({ ...dataBaru, [name]: value })
+    console.log(dataBaru, "<<<handleInput")
   }
 
-  function addSuggestion(event) {
-    event.preventDefault()
-    const data = {
-      title, description
+  function handleSubmit(e) {
+    e.preventDefault()
+    const values = Object.values(dataBaru)
+
+    const errors = values.filter(value => value === '')
+    console.log(values)
+    if (errors.length) {
+      setError(true)
+    } else {
+      // console.log(data);
+      toast.info(`${dataBaru.title} added`, {
+        autoClose: 3000,
+        position: toast.POSITION.TOP_RIGHT,
+      })
+      console.log(dataBaru, "<<<<<")
+      dispatch(newSuggestion(dataBaru))
+      setData({
+        title: '',
+        description: '',
+        type: 'information',
+      })
+      handleClose()
     }
-    dispatch(newSuggestion(data))
-    toast.info(`${title} added to the list`, {
-      autoClose: 3000,
-      position: toast.POSITION.TOP_RIGHT,
-    })
-    handleClose()
   }
 
   return (
@@ -80,15 +130,19 @@ export default function Suggestions() {
                     <Modal.Title>Add Information</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                  <form onSubmit={(event) => addSuggestion(event)}>
+                  <form onSubmit={handleSubmit}>
                     <div className="form-group">
                       <label>Title</label>
-                      <input type="text" className="form-control" placeholder="Title" onChange={addTitle}/>
+                      <input type="text" name="title" className="form-control" placeholder="Title" onChange={handleInput}/>
                     </div>
                     <div className="form-group">
                       <label>Information</label>
-                      <textarea placeholder="Max 200 characters" maxLength= "200" onChange={addDescription} />
-                      <small id="emailHelp" className="form-text text-muted">Voice your information here!</small>
+                      <textarea placeholder="Max 200 characters" name="description" maxLength= "200" onChange={handleInput} />
+                      <label style={{marginTop: 2}}>Type</label><br></br>
+                      <select className="form-select" name="type" onChange={handleInput} style={{ margin: 10, width: 350, height:42.8, marginLeft: 0, marginTop: 2, outline: 0 }}>
+                        <option value="information">Information</option>
+                        <option value="alert">Alert</option>
+                      </select>
                     </div>
                     <div className="d-flex justify-content-end">
                       <button type="submit" className="btn btn-outline-primary" style={{marginRight:0}}>Submit</button>
@@ -96,7 +150,7 @@ export default function Suggestions() {
                   </form>
                   </Modal.Body>
                   <Modal.Footer>
-                  <small id="emailHelp" className="form-text text-muted">Your information will be very helpful in improving our village!</small>
+                  <small id="emailHelp" className="form-text text-muted">Spread the word and let your village know!</small>
                   </Modal.Footer>
                 </Modal>
 
