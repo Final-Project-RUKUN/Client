@@ -31,7 +31,7 @@ export default function Account() {
             <h5>Account Detail</h5>
               <AccountCard admin={admin}/>
 
-            <h5>Village Detail</h5><br/>
+            <br/><h5 style={{marginBottom:20}}>Village Detail</h5>
               <VillageCard village={data}/>
             </div>
           </div>
